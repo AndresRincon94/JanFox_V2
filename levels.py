@@ -90,10 +90,10 @@ class Level_01(Level):
                   [platforms.STONE_PLATFORM_RIGHT, 1260, 280],
                   ]
 
-        # Array with type of platform, and x, y location of the platform.
+        # Array with type of platform, and x, y location of the enemy.
         enemy_array = [ [enemies.DESERT_ENEMY, 430, 435],
                   [enemies.SNOW_ENEMY, 580, 435],
-                  [enemies.JUNGLE_ENEMY, 780, 405]
+                  [enemies.JUNGLE_ENEMY, 780, 0]
                   ]
 
         # Go through the array above and add platforms
