@@ -33,17 +33,21 @@ class Enemy(pygame.sprite.Sprite):
 
     # What direction is the enemy facing?
     direction = "R"
+    goRight = True
+    calc_distance = 0
 
     # List of sprites we can bump against
     level = None
     player = None
 
     # -- Methods
-    def __init__(self, enemy_type):
+    def __init__(self, enemy_type, distance):
         """ Constructor function """
 
         # Call the parent's constructor
         pygame.sprite.Sprite.__init__(self)
+
+        self.distance = distance
 
         # self.walking_frames_r = [pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (1).png'), pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (2).png'), pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (3).png'), pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (4).png'), pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (5).png'), pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (6).png'), pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (7).png'), pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (8).png'), pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (9).png'), pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (10).png')]
         # self.walking_frames_l = [pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (1).png'), pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (2).png'), pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (3).png'), pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (4).png'), pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (5).png'), pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (6).png'), pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (7).png'), pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (8).png'), pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (9).png'), pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (10).png')]
@@ -61,47 +65,6 @@ class Enemy(pygame.sprite.Sprite):
             self.width = 70
             self.height = 100
 
-        # sprite_sheet = SpriteSheet("p1_walk.png")
-        # # Load all the right facing images into a list
-        # image = sprite_sheet.get_image(0, 0, 66, 90)
-        # self.walking_frames_r.append(image)
-        # image = sprite_sheet.get_image(66, 0, 66, 90)
-        # self.walking_frames_r.append(image)
-        # image = sprite_sheet.get_image(132, 0, 67, 90)
-        # self.walking_frames_r.append(image)
-        # image = sprite_sheet.get_image(0, 93, 66, 90)
-        # self.walking_frames_r.append(image)
-        # image = sprite_sheet.get_image(66, 93, 66, 90)
-        # self.walking_frames_r.append(image)
-        # image = sprite_sheet.get_image(132, 93, 72, 90)
-        # self.walking_frames_r.append(image)
-        # image = sprite_sheet.get_image(0, 186, 70, 90)
-        # self.walking_frames_r.append(image)
-
-        # Load all the right facing images, then flip them
-        # to face left.
-        # image = sprite_sheet.get_image(0, 0, 66, 90)
-        # image = pygame.transform.flip(image, True, False)
-        # self.walking_frames_l.append(image)
-        # image = sprite_sheet.get_image(66, 0, 66, 90)
-        # image = pygame.transform.flip(image, True, False)
-        # self.walking_frames_l.append(image)
-        # image = sprite_sheet.get_image(132, 0, 67, 90)
-        # image = pygame.transform.flip(image, True, False)
-        # self.walking_frames_l.append(image)
-        # image = sprite_sheet.get_image(0, 93, 66, 90)
-        # image = pygame.transform.flip(image, True, False)
-        # self.walking_frames_l.append(image)
-        # image = sprite_sheet.get_image(66, 93, 66, 90)
-        # image = pygame.transform.flip(image, True, False)
-        # self.walking_frames_l.append(image)
-        # image = sprite_sheet.get_image(132, 93, 72, 90)
-        # image = pygame.transform.flip(image, True, False)
-        # self.walking_frames_l.append(image)
-        # image = sprite_sheet.get_image(0, 186, 70, 90)
-        # image = pygame.transform.flip(image, True, False)
-        # self.walking_frames_l.append(image)
-
         # Set the image the enemy starts with
         self.image = pygame.transform.scale(self.walking_frames[0], (self.width, self.height))
 
@@ -113,14 +76,16 @@ class Enemy(pygame.sprite.Sprite):
         # Gravity
         self.calc_grav()
 
-        # Move left/right
-        self.rect.x += self.change_x
-        pos = self.rect.x + self.player.level.world_shift
+        # Move
+        self.move()
+        # pos = self.rect.x + self.player.level.world_shift
+
+        # Animation
         if self.direction == "R":
-            frame = (pos // 30) % len(self.walking_frames)
+            frame = (self.rect.x // 30) % len(self.walking_frames)
             self.image = pygame.transform.scale(self.walking_frames[frame], (self.width, self.height))
         else:
-            frame = (pos // 30) % len(self.walking_frames)
+            frame = (self.rect.x // 30) % len(self.walking_frames)
             self.image = pygame.transform.flip(pygame.transform.scale(self.walking_frames[frame], (self.width, self.height)), True, False)
 
         # See if we hit anything
@@ -153,6 +118,25 @@ class Enemy(pygame.sprite.Sprite):
             if isinstance(block, MovingPlatform):
                 self.rect.x += block.change_x
 
+    # movimiento del enemigo
+    def move(self):
+        if self.goRight:
+            if self.calc_distance > self.distance: 
+                self.goRight = False
+                self.calc_distance = 0
+        else:
+            if self.calc_distance < self.distance * -1:  
+                self.goRight = True
+                self.calc_distance = 0
+
+        if self.goRight:
+            self.go_right()
+        else:
+            self.go_left()
+
+        self.rect.x += self.change_x
+        self.calc_distance += self.change_x
+
     def calc_grav(self):
         """ Calculate effect of gravity. """
         if self.change_y == 0:
@@ -165,29 +149,15 @@ class Enemy(pygame.sprite.Sprite):
             self.change_y = 0
             self.rect.y = constants.SCREEN_HEIGHT - self.rect.height
 
-    def jump(self):
-        """ Called when user hits 'jump' button. """
-
-        # move down a bit and see if there is a platform below us.
-        # Move down 2 pixels because it doesn't work well if we only move down 1
-        # when working with a platform moving down.
-        self.rect.y += 2
-        platform_hit_list = pygame.sprite.spritecollide(self, self.player.level.platform_list, False)
-        self.rect.y -= 2
-
-        # If it is ok to jump, set our speed upwards
-        if len(platform_hit_list) > 0 or self.rect.bottom >= constants.SCREEN_HEIGHT:
-            self.change_y = -10
-
     # Enemy-controlled movement:
     def go_left(self):
         """ Called when the user hits the left arrow. """
-        self.change_x = -6
+        self.change_x = -2
         self.direction = "L"
 
     def go_right(self):
         """ Called when the user hits the right arrow. """
-        self.change_x = 6
+        self.change_x = 2
         self.direction = "R"
 
     def stop(self):

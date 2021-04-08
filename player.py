@@ -27,6 +27,9 @@ class Player(pygame.sprite.Sprite):
     # List of sprites we can bump against
     level = None
 
+    # Set score
+    score = 0
+
     # -- Methods
     def __init__(self):
         """ Constructor function """
@@ -34,50 +37,9 @@ class Player(pygame.sprite.Sprite):
         # Call the parent's constructor
         pygame.sprite.Sprite.__init__(self)
 
-        # self.walking_frames_r = [pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (1).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (2).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (3).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (4).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (5).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (6).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (7).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (8).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (9).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (10).png')]
+        # self.walking_frames = [pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (1).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (2).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (3).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (4).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (5).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (6).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (7).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (8).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (9).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (10).png')]
         # self.walking_frames_l = [pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (1).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (2).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (3).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (4).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (5).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (6).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (7).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (8).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (9).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (10).png')]
         self.walking_frames = [pygame.image.load(os.path.join("Assets", "Sprites/personage/Fox/Walk/Walk (1).png")),pygame.image.load(os.path.join("Assets", "Sprites/personage/Fox/Walk/Walk (2).png")),pygame.image.load(os.path.join("Assets", "Sprites/personage/Fox/Walk/Walk (3).png")),pygame.image.load(os.path.join("Assets", "Sprites/personage/Fox/Walk/Walk (4).png")),pygame.image.load(os.path.join("Assets", "Sprites/personage/Fox/Walk/Walk (5).png")),pygame.image.load(os.path.join("Assets", "Sprites/personage/Fox/Walk/Walk (6).png")),pygame.image.load(os.path.join("Assets", "Sprites/personage/Fox/Walk/Walk (7).png")),pygame.image.load(os.path.join("Assets", "Sprites/personage/Fox/Walk/Walk (8).png")),pygame.image.load(os.path.join("Assets", "Sprites/personage/Fox/Walk/Walk (9).png")),pygame.image.load(os.path.join("Assets", "Sprites/personage/Fox/Walk/Walk (10).png"))]
-
-        # sprite_sheet = SpriteSheet("p1_walk.png")
-        # # Load all the right facing images into a list
-        # image = sprite_sheet.get_image(0, 0, 66, 90)
-        # self.walking_frames_r.append(image)
-        # image = sprite_sheet.get_image(66, 0, 66, 90)
-        # self.walking_frames_r.append(image)
-        # image = sprite_sheet.get_image(132, 0, 67, 90)
-        # self.walking_frames_r.append(image)
-        # image = sprite_sheet.get_image(0, 93, 66, 90)
-        # self.walking_frames_r.append(image)
-        # image = sprite_sheet.get_image(66, 93, 66, 90)
-        # self.walking_frames_r.append(image)
-        # image = sprite_sheet.get_image(132, 93, 72, 90)
-        # self.walking_frames_r.append(image)
-        # image = sprite_sheet.get_image(0, 186, 70, 90)
-        # self.walking_frames_r.append(image)
-
-        # Load all the right facing images, then flip them
-        # to face left.
-        # image = sprite_sheet.get_image(0, 0, 66, 90)
-        # image = pygame.transform.flip(image, True, False)
-        # self.walking_frames_l.append(image)
-        # image = sprite_sheet.get_image(66, 0, 66, 90)
-        # image = pygame.transform.flip(image, True, False)
-        # self.walking_frames_l.append(image)
-        # image = sprite_sheet.get_image(132, 0, 67, 90)
-        # image = pygame.transform.flip(image, True, False)
-        # self.walking_frames_l.append(image)
-        # image = sprite_sheet.get_image(0, 93, 66, 90)
-        # image = pygame.transform.flip(image, True, False)
-        # self.walking_frames_l.append(image)
-        # image = sprite_sheet.get_image(66, 93, 66, 90)
-        # image = pygame.transform.flip(image, True, False)
-        # self.walking_frames_l.append(image)
-        # image = sprite_sheet.get_image(132, 93, 72, 90)
-        # image = pygame.transform.flip(image, True, False)
-        # self.walking_frames_l.append(image)
-        # image = sprite_sheet.get_image(0, 186, 70, 90)
-        # image = pygame.transform.flip(image, True, False)
-        # self.walking_frames_l.append(image)
 
         # Set the image the player starts with
         self.image = pygame.transform.scale(self.walking_frames[0], (70, 100))
@@ -130,6 +92,18 @@ class Player(pygame.sprite.Sprite):
             if isinstance(block, MovingPlatform):
                 self.rect.x += block.change_x
 
+        # Check and see if we hit good Object
+        good_object_hit_list = pygame.sprite.spritecollide(self, self.level.good_object_list, True)
+        for good_object in good_object_hit_list:
+            # Add score
+            self.score += 100
+
+        # Check and see if we hit bad Object
+        bad_object_hit_list = pygame.sprite.spritecollide(self, self.level.bad_object_list, False)
+        for bad_object in bad_object_hit_list:
+            # Player death
+            self.rect.x = 0
+        
     def calc_grav(self):
         """ Calculate effect of gravity. """
         if self.change_y == 0:
