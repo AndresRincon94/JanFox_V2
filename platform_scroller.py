@@ -24,12 +24,12 @@ http://opengameart.org/content/platformer-art-deluxe
 
 """
 
-import pygame
-
+import pygame,sys
 import constants
 import levels
 
 from player import Player
+#from Menu import main_menu
 
 def main():
     """ Main Program """
@@ -38,8 +38,8 @@ def main():
     # Set the height and width of the screen
     size = [constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT]
     screen = pygame.display.set_mode(size)
-
-    pygame.display.set_caption("Platformer with sprite sheets")
+   
+    pygame.display.set_caption("JANFOX")
 
     # Create the player
     player = Player()
@@ -79,12 +79,19 @@ def main():
                     player.go_right()
                 if event.key == pygame.K_UP:
                     player.jump()
+                if event.key == pygame.K_ESCAPE:
+                    pausa()
+
 
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_LEFT and player.change_x < 0:
                     player.stop()
                 if event.key == pygame.K_RIGHT and player.change_x > 0:
                     player.stop()
+                if event.key == pygame.K_ESCAPE:
+                    pausa()
+
+            
 
         # Update the player.
         active_sprite_list.update()
@@ -128,6 +135,46 @@ def main():
     # Be IDLE friendly. If you forget this line, the program will 'hang'
     # on exit.
     pygame.quit()
+
+
+def pausa():
+    
+    font = "Dynamix.ttf"
+    green2 = (20, 90, 50)
+    black=(0, 0, 0)
+
+    size = [constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT]
+    bg = pygame.image.load('Assets/Levels/Menu.png')
+    bg = pygame.transform.scale(bg, size)
+
+    win = pygame.display.set_mode(size)
+    pausado = True
+    while pausado:
+        for event in pygame.event.get():
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_c:
+                    pausado = False
+                if event.key == pygame.K_r:
+                    from Menu import main_menu
+
+        pausaText = text_format("PAUSA", font, 50, green2)
+        continuarText = text_format("CONTINUAR 'C'", font, 35, black)
+        quitarText =text_format("QUITAR 'R'", font, 35, black)
+        
+        win.blit(bg, (0,0))
+        win.blit(pausaText,(320,150))
+        win.blit(continuarText,(280,300))
+        win.blit(quitarText,(320,350))
+
+        pygame.display.update()
+
+
+def text_format(message, textFont, textSize, textColor):
+    newFont=pygame.font.Font(textFont, textSize)
+    newText=newFont.render(message, 0, textColor)
+
+    return newText
+
 
 if __name__ == "__main__":
     main()
