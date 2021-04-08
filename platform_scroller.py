@@ -1,3 +1,4 @@
+
 """
 Sample Python/Pygame Programs
 Simpson College Computer Science
@@ -25,6 +26,8 @@ http://opengameart.org/content/platformer-art-deluxe
 """
 
 import pygame,sys
+import pygame
+
 import constants
 import levels
 
@@ -56,7 +59,7 @@ def main():
     active_sprite_list = pygame.sprite.Group()
     player.level = current_level
 
-    player.rect.x = 340
+    player.rect.x = 240
     player.rect.y = constants.SCREEN_HEIGHT - player.rect.height
     active_sprite_list.add(player)
 
