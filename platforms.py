@@ -2,22 +2,26 @@
 Module for managing platforms.
 """
 import pygame
+import os
 
 from spritesheet_functions import SpriteSheet
 
 # These constants define our platform types:
 #   Name of file
-#   X location of sprite
-#   Y location of sprite
+#   Path location of sprite
 #   Width of sprite
 #   Height of sprite
+DESERT_GRASS_LEFT   = (os.path.join("Assets", "Levels/Desert/Tile/14.png"), 70, 50)
+DESERT_GRASS_MIDDLE  = (os.path.join("Assets", "Levels/Desert/Tile/15.png"), 70, 50)
+DESERT_GRASS_RIGHT = (os.path.join("Assets", "Levels/Desert/Tile/16.png"), 70, 50)
+DESERT_STONE_PLATFORM_TOP_LEFT   = (os.path.join("Assets", "Levels/Desert/Tile/1.png"), 70, 70)
+DESERT_STONE_PLATFORM_TOP_MIDDLE = (os.path.join("Assets", "Levels/Desert/Tile/2.png"), 70, 70)
+DESERT_STONE_PLATFORM_TOP_RIGHT  = (os.path.join("Assets", "Levels/Desert/Tile/3.png"), 70, 70)
+DESERT_STONE_PLATFORM_MIDDLE   = (os.path.join("Assets", "Levels/Desert/Tile/5.png"), 70, 70)
+DESERT_STONE_PLATFORM_BOTTOM_LEFT   = (os.path.join("Assets", "Levels/Desert/Tile/12.png"), 70, 70)
+DESERT_STONE_PLATFORM_BOTTOM_MIDDLE = (os.path.join("Assets", "Levels/Desert/Tile/9.png"), 70, 70)
+DESERT_STONE_PLATFORM_BOTTOM_RIGHT  = (os.path.join("Assets", "Levels/Desert/Tile/13.png"), 70, 70)
 
-GRASS_LEFT            = (576, 720, 70, 70)
-GRASS_RIGHT           = (576, 576, 70, 70)
-GRASS_MIDDLE          = (504, 576, 70, 70)
-STONE_PLATFORM_LEFT   = (432, 720, 70, 40)
-STONE_PLATFORM_MIDDLE = (648, 648, 70, 40)
-STONE_PLATFORM_RIGHT  = (792, 648, 70, 40)
 
 class Platform(pygame.sprite.Sprite):
     """ Platform the user can jump on """
@@ -30,10 +34,7 @@ class Platform(pygame.sprite.Sprite):
 
         sprite_sheet = SpriteSheet("tiles_spritesheet.png")
         # Grab the image for this platform
-        self.image = sprite_sheet.get_image(sprite_sheet_data[0],
-                                            sprite_sheet_data[1],
-                                            sprite_sheet_data[2],
-                                            sprite_sheet_data[3])
+        self.image = pygame.transform.scale(pygame.image.load(sprite_sheet_data[0]), (sprite_sheet_data[1], sprite_sheet_data[2]))
 
         self.rect = self.image.get_rect()
 
