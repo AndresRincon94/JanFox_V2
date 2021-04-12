@@ -135,7 +135,7 @@ class Level_01(Level):
             self.enemy_list.add(enem)
 
         # Array with type x and y of good object.
-        good_object_array = [ [objects.BLACKBERRY, 480, 285]]
+        good_object_array = [ [objects.BLACKBERRY, 480, 260]]
 
         # Array with type x and y of bad object.
         bad_object_array = [ [objects.DESERT_CACTUS, 900, 320]]
@@ -143,7 +143,7 @@ class Level_01(Level):
         # Array with type x and y of standard object.
         standard_object_array = [ [objects.DESERT_STONE, 640, 460],
                   [objects.DESERT_CACTUS_2, 430, 430],
-                  [objects.DESERT_SKELETON, 535, 470],
+                  [objects.DESERT_SKELETON, 1130, 470],
                   ]
 
         # Go through the array above and add good object

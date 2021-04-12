@@ -23,6 +23,7 @@ class Player(pygame.sprite.Sprite):
     walking_frames = []
     # What direction is the player facing?
     direction = "R"
+    velocity = 6
 
     # List of sprites we can bump against
     level = None
@@ -133,12 +134,12 @@ class Player(pygame.sprite.Sprite):
     # Player-controlled movement:
     def go_left(self):
         """ Called when the user hits the left arrow. """
-        self.change_x = -6
+        self.change_x = self.velocity * -1
         self.direction = "L"
 
     def go_right(self):
         """ Called when the user hits the right arrow. """
-        self.change_x = 6
+        self.change_x = self.velocity
         self.direction = "R"
 
     def stop(self):
