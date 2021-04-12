@@ -90,8 +90,7 @@ class Level_01(Level):
         """ Create level 1. """
 
         # Call the parent constructor
-        Level.__init__(self, player)
-
+        Level.__init__(self, player)        
         self.background = pygame.image.load("background_01.png").convert()
         self.background.set_colorkey(constants.WHITE)
         self.level_limit = -2500
@@ -135,7 +134,11 @@ class Level_01(Level):
             self.enemy_list.add(enem)
 
         # Array with type x and y of good object.
+<<<<<<< HEAD
         good_object_array = [ [objects.BLACKBERRY, 480, 260]]
+=======
+        good_object_array = [ [objects.BLACKBERRY, 480, 285],[objects.BLACKBERRY, 1020, 280],[objects.BLACKBERRY, 1800, 280],[objects.BLACKBERRY, 1810, 290],[objects.BLACKBERRY, 1820, 280],[objects.BLACKBERRY, 1900, 280],[objects.BLACKBERRY, 1910, 290],[objects.BLACKBERRY, 1920, 280],[objects.BLACKBERRY, 2000, 280],[objects.BLACKBERRY, 2010, 290],[objects.BLACKBERRY, 2020, 280]]
+>>>>>>> fa83ef7cdc06a92de06a057dbc1d8f4f26abd999
 
         # Array with type x and y of bad object.
         bad_object_array = [ [objects.DESERT_CACTUS, 900, 320]]
@@ -151,8 +154,9 @@ class Level_01(Level):
             obj = objects.Object(good_object[0])
             obj.rect.x = good_object[1]
             obj.rect.y = good_object[2]
-            obj.player = self.player
+            obj.player = self.player            
             self.good_object_list.add(obj)
+            
 
         # Go through the array above and add bad object
         for bad_object in bad_object_array:

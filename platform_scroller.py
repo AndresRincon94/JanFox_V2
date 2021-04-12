@@ -10,6 +10,8 @@ from player import Player
 def main():
     """ Main Program """
     pygame.init()
+    pygame.mixer.music.load("Assets/Sound/backgroundSound2.mp3")
+    pygame.mixer.music.play(3)
 
     # Set the height and width of the screen
     size = [constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT]
