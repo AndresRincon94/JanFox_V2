@@ -134,11 +134,19 @@ class Level_01(Level):
             self.enemy_list.add(enem)
 
         # Array with type x and y of good object.
-<<<<<<< HEAD
         good_object_array = [ [objects.BLACKBERRY, 480, 260]]
-=======
-        good_object_array = [ [objects.BLACKBERRY, 480, 285],[objects.BLACKBERRY, 1020, 280],[objects.BLACKBERRY, 1800, 280],[objects.BLACKBERRY, 1810, 290],[objects.BLACKBERRY, 1820, 280],[objects.BLACKBERRY, 1900, 280],[objects.BLACKBERRY, 1910, 290],[objects.BLACKBERRY, 1920, 280],[objects.BLACKBERRY, 2000, 280],[objects.BLACKBERRY, 2010, 290],[objects.BLACKBERRY, 2020, 280]]
->>>>>>> fa83ef7cdc06a92de06a057dbc1d8f4f26abd999
+
+        good_object_array = [ [objects.BLACKBERRY, 480, 285],
+                            [objects.BLACKBERRY, 1020, 280],
+                            [objects.BLACKBERRY, 1800, 280],
+                            [objects.BLACKBERRY, 1810, 290],
+                            [objects.BLACKBERRY, 1820, 280],
+                            [objects.BLACKBERRY, 1900, 280],
+                            [objects.BLACKBERRY, 1910, 290],
+                            [objects.BLACKBERRY, 1920, 280],
+                            [objects.BLACKBERRY, 2000, 280],
+                            [objects.BLACKBERRY, 2010, 290],
+                            [objects.BLACKBERRY, 2020, 280]]
 
         # Array with type x and y of bad object.
         bad_object_array = [ [objects.DESERT_CACTUS, 900, 320]]
