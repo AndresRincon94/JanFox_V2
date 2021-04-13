@@ -21,9 +21,17 @@ class Player(pygame.sprite.Sprite):
     # This holds all the images for the animated walk left/right
     # of our player
     walking_frames = []
+    dying_frames = []
+
     # What direction is the player facing?
     direction = "R"
     velocity = 6
+
+    # Items of dead
+    countDeadFrame = 0
+    countReviveFrame = 0
+    indexDead = 0    
+    isDead = False
 
     # List of sprites we can bump against
     level = None
@@ -31,20 +39,24 @@ class Player(pygame.sprite.Sprite):
     # Set score
     score = 0
 
+    # items dead health
+    countHealthFrame = 0
+    health = 100
+    lifes = 3
+
     # -- Methods
     def __init__(self):
         """ Constructor function """
 
         # Call the parent's constructor
         pygame.sprite.Sprite.__init__(self)
+        
         self.salto = pygame.mixer.Sound("Assets/Sound/jumpSound1.ogg") 
         self.recoger = pygame.mixer.Sound("Assets/Sound/pickupSound1.ogg")    
              
-        # self.walking_frames_r = [pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (1).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (2).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (3).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (4).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (5).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (6).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (7).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (8).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (9).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (10).png')]
-        # self.walking_frames = [pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (1).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (2).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (3).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (4).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (5).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (6).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (7).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (8).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (9).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (10).png')]
-
         # self.walking_frames_l = [pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (1).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (2).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (3).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (4).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (5).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (6).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (7).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (8).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (9).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (10).png')]
         self.walking_frames = [pygame.image.load(os.path.join("Assets", "Sprites/personage/Fox/Walk/Walk (1).png")),pygame.image.load(os.path.join("Assets", "Sprites/personage/Fox/Walk/Walk (2).png")),pygame.image.load(os.path.join("Assets", "Sprites/personage/Fox/Walk/Walk (3).png")),pygame.image.load(os.path.join("Assets", "Sprites/personage/Fox/Walk/Walk (4).png")),pygame.image.load(os.path.join("Assets", "Sprites/personage/Fox/Walk/Walk (5).png")),pygame.image.load(os.path.join("Assets", "Sprites/personage/Fox/Walk/Walk (6).png")),pygame.image.load(os.path.join("Assets", "Sprites/personage/Fox/Walk/Walk (7).png")),pygame.image.load(os.path.join("Assets", "Sprites/personage/Fox/Walk/Walk (8).png")),pygame.image.load(os.path.join("Assets", "Sprites/personage/Fox/Walk/Walk (9).png")),pygame.image.load(os.path.join("Assets", "Sprites/personage/Fox/Walk/Walk (10).png"))]
+        self.dying_frames = [pygame.image.load(os.path.join("Assets", "Sprites/personage/Fox/Dead/Dead (1).png")),pygame.image.load(os.path.join("Assets", "Sprites/personage/Fox/Dead/Dead (2).png")),pygame.image.load(os.path.join("Assets", "Sprites/personage/Fox/Dead/Dead (3).png")),pygame.image.load(os.path.join("Assets", "Sprites/personage/Fox/Dead/Dead (4).png")),pygame.image.load(os.path.join("Assets", "Sprites/personage/Fox/Dead/Dead (5).png")),pygame.image.load(os.path.join("Assets", "Sprites/personage/Fox/Dead/Dead (6).png")),pygame.image.load(os.path.join("Assets", "Sprites/personage/Fox/Dead/Dead (7).png")),pygame.image.load(os.path.join("Assets", "Sprites/personage/Fox/Dead/Dead (8).png")),pygame.image.load(os.path.join("Assets", "Sprites/personage/Fox/Dead/Dead (9).png")),pygame.image.load(os.path.join("Assets", "Sprites/personage/Fox/Dead/Dead (10).png"))]
 
         # Set the image the player starts with
         self.image = pygame.transform.scale(self.walking_frames[0], (70, 100))
@@ -56,27 +68,6 @@ class Player(pygame.sprite.Sprite):
         """ Move the player. """
         # Gravity
         self.calc_grav()
-
-        # Move left/right
-        self.rect.x += self.change_x
-        pos = self.rect.x + self.level.world_shift
-        if self.direction == "R":
-            frame = (pos // 30) % len(self.walking_frames)
-            self.image = pygame.transform.scale(self.walking_frames[frame], (70, 100))
-        else:
-            frame = (pos // 30) % len(self.walking_frames)
-            self.image = pygame.transform.flip(pygame.transform.scale(self.walking_frames[frame], (70, 100)), True, False)
-
-        # See if we hit anything
-        block_hit_list = pygame.sprite.spritecollide(self, self.level.platform_list, False)
-        for block in block_hit_list:
-            # If we are moving right,
-            # set our right side to the left side of the item we hit
-            if self.change_x > 0:
-                self.rect.right = block.rect.left
-            elif self.change_x < 0:
-                # Otherwise if we are moving left, do the opposite.
-                self.rect.left = block.rect.right
 
         # Move up/down
         self.rect.y += self.change_y
@@ -97,18 +88,52 @@ class Player(pygame.sprite.Sprite):
             if isinstance(block, MovingPlatform):
                 self.rect.x += block.change_x
 
-        # Check and see if we hit good Object
-        good_object_hit_list = pygame.sprite.spritecollide(self, self.level.good_object_list, True)
-        for good_object in good_object_hit_list:
-            # Add score
-            self.score += 100
-            self.recoger.play()
+        if not self.isDead:                        
+            # Move left/right
+            self.rect.x += self.change_x
+            pos = self.rect.x + self.level.world_shift
+            if self.direction == "R":
+                frame = (pos // 30) % len(self.walking_frames)
+                self.image = pygame.transform.scale(self.walking_frames[frame], (70, 100))
+            else:
+                frame = (pos // 30) % len(self.walking_frames)
+                self.image = pygame.transform.flip(pygame.transform.scale(self.walking_frames[frame], (70, 100)), True, False)
 
-        # Check and see if we hit bad Object
-        bad_object_hit_list = pygame.sprite.spritecollide(self, self.level.bad_object_list, False)
-        for bad_object in bad_object_hit_list:
-            # Player death
-            self.rect.x = 0
+            # See if we hit anything
+            block_hit_list = pygame.sprite.spritecollide(self, self.level.platform_list, False)
+            for block in block_hit_list:
+                # If we are moving right,
+                # set our right side to the left side of the item we hit
+                if self.change_x > 0:
+                    self.rect.right = block.rect.left
+                elif self.change_x < 0:
+                    # Otherwise if we are moving left, do the opposite.
+                    self.rect.left = block.rect.right
+
+            # Check and see if we hit good Object
+            good_object_hit_list = pygame.sprite.spritecollide(self, self.level.good_object_list, True)
+            for good_object in good_object_hit_list:
+                # Add score
+                self.score += 100
+                self.health += 5
+                if self.health > 100:
+                    self.health = 100
+                self.recoger.play()
+
+            # Check and see if we hit bad Object
+            enemy_hit_list = pygame.sprite.spritecollide(self, self.level.enemy_list, False)
+            for enemy in enemy_hit_list:
+                # Player die
+                self.loseHealth(10)
+                
+            # Check and see if we hit bad Object
+            bad_object_hit_list = pygame.sprite.spritecollide(self, self.level.bad_object_list, False)
+            for bad_object in bad_object_hit_list:
+                # Player die
+                if not self.isDead:
+                    self.loseHealth(self.health)
+        else:
+            self.dead()
         
     def calc_grav(self):
         """ Calculate effect of gravity. """
@@ -137,6 +162,38 @@ class Player(pygame.sprite.Sprite):
         if len(platform_hit_list) > 0 or self.rect.bottom >= constants.SCREEN_HEIGHT:
             self.change_y = -10
             self.salto.play()
+
+    def loseHealth(self, lose):
+        self.countHealthFrame += 1
+        if self.countHealthFrame == 1:
+            self.health -= lose
+        elif self.countHealthFrame > 20:
+            self.countHealthFrame = 0
+
+        if self.health == 0:
+            self.dead()
+
+    # Player-controlled movement:
+    def dead(self):
+        if not self.isDead:
+            self.lifes -= 1
+
+        if self.indexDead < len(self.dying_frames):
+            self.countDeadFrame += 1
+            if self.countDeadFrame > 4:
+                self.image = pygame.transform.scale(self.dying_frames[self.indexDead], (115, 115))        
+                self.indexDead += 1
+                self.countDeadFrame = 0
+            self.isDead = True
+
+        if self.isDead and self.indexDead == len(self.dying_frames) - 1:
+            if self.lifes > 0:
+                self.indexDead = 0
+                self.rect.x = 0
+                self.rect.y = 0
+                self.health = 100
+                self.isDead = False
+
     # Player-controlled movement:
     def go_left(self):
         """ Called when the user hits the left arrow. """

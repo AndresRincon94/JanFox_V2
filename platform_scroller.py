@@ -1,5 +1,6 @@
 import pygame,sys
 import pygame
+import os
 
 import constants
 import levels
@@ -50,26 +51,25 @@ def main():
             if event.type == pygame.QUIT: # If user clicked close
                 done = True # Flag that we are done so we exit this loop
 
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_LEFT:
-                    player.go_left()
-                if event.key == pygame.K_RIGHT:
-                    player.go_right()
-                if event.key == pygame.K_UP:
-                    player.jump()
-                if event.key == pygame.K_ESCAPE:
-                    pausa()
+            if not player.isDead:
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_LEFT:
+                        player.go_left()
+                    if event.key == pygame.K_RIGHT:
+                        player.go_right()
+                    if event.key == pygame.K_UP:
+                        player.jump()
+                    if event.key == pygame.K_ESCAPE:
+                        pausa()
 
 
-            if event.type == pygame.KEYUP:
-                if event.key == pygame.K_LEFT and player.change_x < 0:
-                    player.stop()
-                if event.key == pygame.K_RIGHT and player.change_x > 0:
-                    player.stop()
-                if event.key == pygame.K_ESCAPE:
-                    pausa()
-
-            
+                if event.type == pygame.KEYUP:
+                    if event.key == pygame.K_LEFT and player.change_x < 0:
+                        player.stop()
+                    if event.key == pygame.K_RIGHT and player.change_x > 0:
+                        player.stop()
+                    if event.key == pygame.K_ESCAPE:
+                        pausa()            
 
         # Update the player.
         active_sprite_list.update()
@@ -104,6 +104,9 @@ def main():
         active_sprite_list.draw(screen)
 
         # ALL CODE TO DRAW SHOULD GO ABOVE THIS COMMENT
+        showScore(screen, player.score, 450, 15)
+        showHealthBar(screen, player.health, 10, 10)
+        showLifes(screen, player.lifes, 910, 10)
 
         # Limit to 60 frames per second
         clock.tick(60)
@@ -115,14 +118,36 @@ def main():
     # on exit.
     pygame.quit()
 
+def showScore(screen, score, x, y):
+    font = pygame.font.SysFont('comicsans', 30, True)
+    textScore = font.render('Score: ' + str(score), 1, constants.BLACK)
+    screen.blit(textScore, (x, y))
+
+def showLifes(screen, lifes, x, y):
+    font = pygame.font.SysFont('comicsans', 30, True)
+    lifeImg = pygame.image.load(os.path.join("Assets", "Sprites/personage/Fox/Face.png"))
+    screen.blit(pygame.transform.scale(lifeImg, (35, 34)), (x, y))
+    
+    textLifes = font.render(str(lifes), 1, constants.BLACK)
+    screen.blit(textLifes, (x + 50, y + 7))
+
+def showHealthBar(screen, health, x, y):
+    width = 200
+    height = 25
+    border = pygame.Rect(x, y, width, height)
+    barWidth = int((health / 100) * width)  
+    barRect = pygame.Rect(x, y, barWidth, height)
+    pygame.draw.rect(screen, constants.BLUE, border, 3)
+    pygame.draw.rect(screen, constants.BLUE, barRect)
 
 def pausa():
-    
+    size = [constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT]
+    win = pygame.display.set_mode(size)
+
     font = "Dynamix.ttf"
     green2 = (20, 90, 50)
     black=(0, 0, 0)
-
-    size = [constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT]
+    
     bg = pygame.image.load('Assets/Levels/Menu.png')
     bg = pygame.transform.scale(bg, size)
 
