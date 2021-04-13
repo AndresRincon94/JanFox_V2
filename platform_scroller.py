@@ -134,11 +134,19 @@ def showLifes(screen, lifes, x, y):
 def showHealthBar(screen, health, x, y):
     width = 200
     height = 25
+    color = constants.GREEN
+    elif health == 0:
+        color = constants.BLACK
+    elif health <= 30:
+        color = constants.RED
+    elif health <= 65:
+        color = constants.YELLOW
+
     border = pygame.Rect(x, y, width, height)
     barWidth = int((health / 100) * width)  
     barRect = pygame.Rect(x, y, barWidth, height)
-    pygame.draw.rect(screen, constants.BLUE, border, 3)
-    pygame.draw.rect(screen, constants.BLUE, barRect)
+    pygame.draw.rect(screen, color, border, 3)
+    pygame.draw.rect(screen, color, barRect)
 
 def pausa():
     size = [constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT]
