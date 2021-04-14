@@ -93,12 +93,16 @@ def main():
         # If the player gets to the end of the level, go to the next level
         current_position = player.rect.x + current_level.world_shift
         if current_position < current_level.level_limit:
-            player.rect.x = 100
             if current_level_no < len(level_list)-1:
+                player.rect.x = 100
                 current_level_no += 1
                 current_level = level_list[current_level_no]
                 player.level = current_level
                 player.velocity *= 1.25
+            elif current_level_no == len(level_list)-1:
+                # victory
+                player.rect.x = 100
+                print('Victory')
 
         # ALL CODE TO DRAW SHOULD GO BELOW THIS COMMENT
         current_level.draw(screen)
