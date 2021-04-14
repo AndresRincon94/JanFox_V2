@@ -7,13 +7,6 @@ import constants
 import os
 
 from platforms import MovingPlatform
-# # from spritesheet_functions import SpriteSheetk
-
-BLACKBERRY   = (os.path.join("Assets", "Sprites/Objects/Fruits/shadow/32.png"), 70, 70)
-DESERT_CACTUS  = (os.path.join("Assets", "Levels/Desert/Objects/Cactus (1).png"), 79, 80)
-DESERT_CACTUS_2  = (os.path.join("Assets", "Levels/Desert/Objects/Cactus (3).png"), 67, 73)
-DESERT_STONE = (os.path.join("Assets", "Levels/Desert/Objects/Stone.png"), 68, 40)
-DESERT_SKELETON = (os.path.join("Assets", "Levels/Desert/Objects/Skeleton.png"), 90, 32)
 
 class Object(pygame.sprite.Sprite):
     """ This class represents the bar at the bottom that the object
