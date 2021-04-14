@@ -135,17 +135,16 @@ def showHealthBar(screen, health, x, y):
     width = 200
     height = 25
     color = constants.GREEN
-    elif health == 0:
-        color = constants.BLACK
-    elif health <= 30:
+    
+    if health <= 30:
         color = constants.RED
     elif health <= 65:
         color = constants.YELLOW
 
-    border = pygame.Rect(x, y, width, height)
+    border = pygame.Rect(x, y, width + 4, height + 4)
     barWidth = int((health / 100) * width)  
-    barRect = pygame.Rect(x, y, barWidth, height)
-    pygame.draw.rect(screen, color, border, 3)
+    barRect = pygame.Rect(x + 2, y + 2, barWidth, height)
+    pygame.draw.rect(screen, constants.BLACK, border, 3)
     pygame.draw.rect(screen, color, barRect)
 
 def pausa():
