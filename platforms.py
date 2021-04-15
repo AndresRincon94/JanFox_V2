@@ -6,23 +6,6 @@ import os
 
 from spritesheet_functions import SpriteSheet
 
-# These constants define our platform types:
-#   Name of file
-#   Path location of sprite
-#   Width of sprite
-#   Height of sprite
-DESERT_GRASS_LEFT   = (os.path.join("Assets", "Levels/Desert/Tile/14.png"), 70, 50)
-DESERT_GRASS_MIDDLE  = (os.path.join("Assets", "Levels/Desert/Tile/15.png"), 70, 50)
-DESERT_GRASS_RIGHT = (os.path.join("Assets", "Levels/Desert/Tile/16.png"), 70, 50)
-DESERT_STONE_PLATFORM_TOP_LEFT   = (os.path.join("Assets", "Levels/Desert/Tile/1.png"), 70, 70)
-DESERT_STONE_PLATFORM_TOP_MIDDLE = (os.path.join("Assets", "Levels/Desert/Tile/2.png"), 70, 70)
-DESERT_STONE_PLATFORM_TOP_RIGHT  = (os.path.join("Assets", "Levels/Desert/Tile/3.png"), 70, 70)
-DESERT_STONE_PLATFORM_MIDDLE   = (os.path.join("Assets", "Levels/Desert/Tile/5.png"), 70, 70)
-DESERT_STONE_PLATFORM_BOTTOM_LEFT   = (os.path.join("Assets", "Levels/Desert/Tile/12.png"), 70, 70)
-DESERT_STONE_PLATFORM_BOTTOM_MIDDLE = (os.path.join("Assets", "Levels/Desert/Tile/9.png"), 70, 70)
-DESERT_STONE_PLATFORM_BOTTOM_RIGHT  = (os.path.join("Assets", "Levels/Desert/Tile/13.png"), 70, 70)
-
-
 class Platform(pygame.sprite.Sprite):
     """ Platform the user can jump on """
 

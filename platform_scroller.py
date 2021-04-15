@@ -27,6 +27,7 @@ def main():
     level_list = []
     level_list.append(levels.Level_01(player))
     level_list.append(levels.Level_02(player))
+    level_list.append(levels.Level_03(player))
 
     # Set the current level
     current_level_no = 0
@@ -92,8 +93,8 @@ def main():
         # If the player gets to the end of the level, go to the next level
         current_position = player.rect.x + current_level.world_shift
         if current_position < current_level.level_limit:
-            player.rect.x = 120
             if current_level_no < len(level_list)-1:
+                player.rect.x = 100
                 current_level_no += 1
                 #si es el nivel 4 pantalla de victoria
                 if current_level_no == 4:
@@ -102,6 +103,10 @@ def main():
                 current_level = level_list[current_level_no]
                 player.level = current_level
                 player.velocity *= 1.25
+            elif current_level_no == len(level_list)-1:
+                # victory
+                player.rect.x = 100
+                print('Victory')
 
         # ALL CODE TO DRAW SHOULD GO BELOW THIS COMMENT
         current_level.draw(screen)
@@ -133,7 +138,7 @@ def showScore(screen, score, x, y):
 
 def showLifes(screen, lifes, x, y):
     font = pygame.font.SysFont('comicsans', 30, True)
-    lifeImg = pygame.image.load(os.path.join("Assets", "Sprites/personage/Fox/Face.png"))
+    lifeImg = constants.PLAYER_FACE
     screen.blit(pygame.transform.scale(lifeImg, (35, 34)), (x, y))
     
     textLifes = font.render(str(lifes), 1, constants.BLACK)
