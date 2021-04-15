@@ -95,6 +95,10 @@ def main():
             player.rect.x = 120
             if current_level_no < len(level_list)-1:
                 current_level_no += 1
+                #si es el nivel 4 pantalla de victoria
+                if current_level_no == 4:
+                    Victory()
+
                 current_level = level_list[current_level_no]
                 player.level = current_level
                 player.velocity *= 1.25
@@ -107,6 +111,10 @@ def main():
         showScore(screen, player.score, 450, 15)
         showHealthBar(screen, player.health, 10, 10)
         showLifes(screen, player.lifes, 910, 10)
+
+        #vidas en cero GameOver
+        if (player.lifes == 0):
+            GameOver(player.score)
 
         # Limit to 60 frames per second
         clock.tick(60)
@@ -168,17 +176,16 @@ def pausa():
                 if event.key == pygame.K_r:
                     from Menu import main_menu
 
-        pausaText = text_format("PAUSA", font, 50, green2)
-        continuarText = text_format("CONTINUAR 'C'", font, 35, black)
-        quitarText =text_format("QUITAR 'R'", font, 35, black)
+        pausaText = text_format("PAUSA", font, 60, green2)
+        continuarText = text_format("CONTINUAR 'C'", font, 45, black)
+        quitarText =text_format("QUITAR 'R'", font, 45, black)
         
         win.blit(bg, (0,0))
-        win.blit(pausaText,(320,150))
-        win.blit(continuarText,(280,300))
-        win.blit(quitarText,(320,350))
+        win.blit(pausaText,(300,150))
+        win.blit(continuarText,(240,300))
+        win.blit(quitarText,(300,370))
 
         pygame.display.update()
-
 
 def text_format(message, textFont, textSize, textColor):
     newFont=pygame.font.Font(textFont, textSize)
@@ -186,6 +193,63 @@ def text_format(message, textFont, textSize, textColor):
 
     return newText
 
+def GameOver(score):
+    size = [constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT]
+    win = pygame.display.set_mode(size)
+
+    font = "Dynamix.ttf"
+    green2 = (20, 90, 50)
+    black=(0, 0, 0)
+    
+    bg = pygame.image.load('Assets/Levels/Menu.png')
+    bg = pygame.transform.scale(bg, size)
+
+    win = pygame.display.set_mode(size)
+    for event in pygame.event.get():
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_c:
+                from Menu import main_menu
+
+    GameOverText = text_format("GAME OVER", font, 70, green2)
+    InicioText = text_format("INICIO 'C'", font, 45, black)
+    ScoreText = text_format("PUNTAJE: " +str(score), font, 40, black)
+
+    win.blit(bg, (0,0))
+    win.blit(GameOverText,(230,150))
+    win.blit(ScoreText,(320,280))
+    win.blit(InicioText,(360,390))
+    
+
+    pygame.display.update()
+
+def Victory(score):
+    size = [constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT]
+    win = pygame.display.set_mode(size)
+
+    font = "Dynamix.ttf"
+    green2 = (20, 90, 50)
+    black=(0, 0, 0)
+    
+    bg = pygame.image.load('Assets/Levels/Menu.png')
+    bg = pygame.transform.scale(bg, size)
+
+    win = pygame.display.set_mode(size)
+    pausado = True
+    for event in pygame.event.get():
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_c:
+                from Menu import main_menu
+
+    VictoryText = text_format("VICTORY", font, 70, black)
+    InicioText = text_format("INICIO 'C'", font, 45, black)
+    ScoreText = text_format("PUNTAJE: " +str(score), font, 40, black)
+
+    win.blit(bg, (0,0))
+    win.blit(VictoryText,(280,150))
+    win.blit(InicioText,(360,300))
+    win.blit(ScoreText,(320,360))
+
+    pygame.display.update()
 
 if __name__ == "__main__":
     main()
