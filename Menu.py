@@ -1,6 +1,6 @@
 import pygame
-from pygame.locals import *
 import os
+import platform_scroller
 
 # Game Initialization
 pygame.init()
@@ -9,9 +9,8 @@ pygame.init()
 os.environ['SDL_VIDEO_CENTERED'] = '1'
 
 # Game Resolution
-screen_width=800
+screen_width=1000
 screen_height=600
-
 screen=pygame.display.set_mode((screen_width, screen_height))
 
 # Text Renderer
@@ -32,10 +31,6 @@ green2 = (20, 90, 50)
 # Game Fonts
 font = "Dynamix.ttf"
 Bg = pygame.image.load("Assets/Levels/Menu.png")
-Piso1 = pygame.image.load('Assets/Levels/Desert/Tile/2.png')
-Tree = pygame.image.load('Assets/Levels/jungle/Object/Tree_3.png')
-Piso2 = pygame.image.load('Assets/Levels/Desert/Tile/2.png')
-Piso3 = pygame.image.load('Assets/Levels/Desert/Tile/3.png')
 Fox = pygame.image.load('Assets/Sprites/personage/Fox/Idle/Idle (1).png')
 
 size = (screen_width,screen_height) 
@@ -51,7 +46,9 @@ def main_menu():
 
     menu=True
     selected="start"
-
+    pygame.mixer.music.load("Assets/Sound/Menu.mp3")
+    pygame.mixer.music.play(9)
+    
     while menu:
         for event in pygame.event.get():
             if event.type==pygame.QUIT:
@@ -64,17 +61,15 @@ def main_menu():
                     selected="quit"
                 if event.key==pygame.K_RETURN:
                     if selected=="start":
-                        from platform_scroller import main
+                        platform_scroller.main()
+                        
                     if selected=="quit":
                         pygame.quit()
                         quit()
 
         # Main Menu UI
-        # screen.fill(green)
         screen.blit(Bg, (0,0))
-        # screen.blit(pygame.transform.scale(Piso1, (650, 40)), (90,500))
-        # screen.blit(pygame.transform.scale(Tree, (120, 170)), (620,330))
-        screen.blit(pygame.transform.scale(Fox, (120, 150)), (100,360))
+        screen.blit(pygame.transform.scale(Fox, (160, 150)), (100,340))
 
         title=text_format("JANFOX", font, 90, green2)
         if selected=="start":
@@ -95,8 +90,8 @@ def main_menu():
         screen.blit(text_start, (screen_width/2 - (start_rect[2]/2), 280))
         screen.blit(text_quit, (screen_width/2 - (quit_rect[2]/2), 360))
         pygame.display.update()
-        clock.tick(FPS)
-        pygame.display.set_caption("Python - Pygame Simple Main Menu Selection")
+        pygame.display.set_caption("JANFOX")
+
 
 #Initialize the Game
 main_menu()
