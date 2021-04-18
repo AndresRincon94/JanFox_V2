@@ -100,12 +100,10 @@ def main():
                 current_level = level_list[current_level_no]
                 player.level = current_level
                 player.velocity *= 1.25
-            elif current_level_no == len(level_list)-1:
+            elif current_level_no == len(level_list)-1 and not player.victory:
                 # victory
-                player.rect.x = 100
-                print('Victory')
-                GameOverVictory(player.score,"VICTORY")        
-
+                player.victory = True
+                GameOverVictory(player.score,"VICTORY")
 
         # ALL CODE TO DRAW SHOULD GO BELOW THIS COMMENT
         current_level.draw(screen)
@@ -116,9 +114,13 @@ def main():
         showHealthBar(screen, player.health, 10, 10)
         showLifes(screen, player.lifes, 910, 10)
 
-        #vidas en cero GameOver
+        # Validate lifes or GameOver
         if (player.lifes == 0):
             GameOverVictory(player.score,"GAME OVER")
+
+        # Validate victory
+        if (player.victory):
+            GameOverVictory(player.score,"GANASTE!!")
 
         # Limit to 60 frames per second
         clock.tick(60)
@@ -174,15 +176,17 @@ def pausa():
     pausado = True
     while pausado:
         for event in pygame.event.get():
+            if event.type == pygame.QUIT: # If user clicked close
+                done = True
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_c:
                     pausado = False
-                if event.key == pygame.K_r:
+                if event.key == pygame.K_s:
                     Menu.main_menu()
 
         pausaText = text_format("PAUSA", font, 60, green2)
         continuarText = text_format("CONTINUAR 'C'", font, 45, black)
-        quitarText =text_format("QUITAR 'R'", font, 45, black)
+        quitarText =text_format("SALIR 'S'", font, 45, black)
         
         win.blit(bg, (0,0))
         win.blit(pausaText,(300,150))
@@ -210,25 +214,29 @@ def GameOverVictory(score, text):
     bg = pygame.image.load('Assets/Levels/Menu.png')
     bg = pygame.transform.scale(bg, size)
 
-    
-    win = pygame.display.set_mode(size)
     for event in pygame.event.get():
+        if event.type == pygame.QUIT: # If user clicked close
+                done = True
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_c:
+            if event.key == pygame.K_s:
                 Menu.main_menu()
+            if event.key == pygame.K_r:
+                    main()
 
     Text = text_format(str(text), font, 70, green2)
-    InicioText = text_format("INICIO 'C'", font, 45, black)
+    RestartText = text_format("REINICIAR 'R'", font, 40, black)
+    ExitText = text_format("SALIR 'S'", font, 40, black)
     ScoreText = text_format("PUNTAJE: " +str(score), font, 40, black)
 
     win.blit(bg, (0,0))
-    win.blit(Text,(230,150))
-    win.blit(ScoreText,(320,280))
-    win.blit(InicioText,(360,390))
+    win.blit(Text,(constants.SCREEN_WIDTH/2 - int(Text.get_rect()[2]/2),80))
+    win.blit(ScoreText,(constants.SCREEN_WIDTH/2 - int(ScoreText.get_rect()[2]/2),210))
+    win.blit(RestartText,(constants.SCREEN_WIDTH/2 - int(RestartText.get_rect()[2]/2),345))
+    win.blit(ExitText,(constants.SCREEN_WIDTH/2 - int(ExitText.get_rect()[2]/2),410))
     pygame.display.update()
 
 def Run():
-    from Menu import main_menu
+    # from Menu import main_menu
     main()
 
 if __name__ == "__main__":
