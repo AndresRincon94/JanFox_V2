@@ -35,6 +35,7 @@ class Player(pygame.sprite.Sprite):
 
     # List of sprites we can bump against
     level = None
+    victory = False
 
     # Set score
     score = 0
@@ -50,6 +51,8 @@ class Player(pygame.sprite.Sprite):
 
         # Call the parent's constructor
         pygame.sprite.Sprite.__init__(self)
+
+        self.victory = False
         
         self.salto = pygame.mixer.Sound("Assets/Sound/jumpSound1.ogg") 
         self.recoger = pygame.mixer.Sound("Assets/Sound/pickupSound1.ogg")    
@@ -58,7 +61,7 @@ class Player(pygame.sprite.Sprite):
         # self.walking_frames_l = [pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (1).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (2).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (3).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (4).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (5).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (6).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (7).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (8).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (9).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (10).png')]
         self.walking_frames = constants.PLAYER_WALKING_FRAMES
         self.dying_frames = constants.PLAYER_DYING_FRAMES
-
+        
         # Set the image the player starts with
         self.image = pygame.transform.scale(self.walking_frames[0], (70, 100))
 
