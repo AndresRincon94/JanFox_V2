@@ -4,9 +4,9 @@ import os
 
 import constants
 import levels
+import Menu
 
 from player import Player
-#from Menu import main_menu
 
 def main():
     """ Main Program """
@@ -96,10 +96,7 @@ def main():
             if current_level_no < len(level_list)-1:
                 player.rect.x = 100
                 current_level_no += 1
-                #si es el nivel 4 pantalla de victoria
-                if current_level_no == 4:
-                    GameOverVictory(player.score,"GAME OVER")
-
+               
                 current_level = level_list[current_level_no]
                 player.level = current_level
                 player.velocity *= 1.25
@@ -107,6 +104,8 @@ def main():
                 # victory
                 player.rect.x = 100
                 print('Victory')
+                GameOverVictory(player.score,"VICTORY")        
+
 
         # ALL CODE TO DRAW SHOULD GO BELOW THIS COMMENT
         current_level.draw(screen)
@@ -179,7 +178,7 @@ def pausa():
                 if event.key == pygame.K_c:
                     pausado = False
                 if event.key == pygame.K_r:
-                    from Menu import main_menu
+                    Menu.main_menu()
 
         pausaText = text_format("PAUSA", font, 60, green2)
         continuarText = text_format("CONTINUAR 'C'", font, 45, black)
@@ -199,21 +198,24 @@ def text_format(message, textFont, textSize, textColor):
     return newText
 
 def GameOverVictory(score, text):
+    pygame.mixer.music.load("Assets/Sound/Menu.mp3")
+
     size = [constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT]
     win = pygame.display.set_mode(size)
-
+    
     font = "Dynamix.ttf"
     green2 = (20, 90, 50)
     black=(0, 0, 0)
-    
+
     bg = pygame.image.load('Assets/Levels/Menu.png')
     bg = pygame.transform.scale(bg, size)
 
+    
     win = pygame.display.set_mode(size)
     for event in pygame.event.get():
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_c:
-                from Menu import main_menu
+                Menu.main_menu()
 
     Text = text_format(str(text), font, 70, green2)
     InicioText = text_format("INICIO 'C'", font, 45, black)
@@ -223,8 +225,11 @@ def GameOverVictory(score, text):
     win.blit(Text,(230,150))
     win.blit(ScoreText,(320,280))
     win.blit(InicioText,(360,390))
-    
     pygame.display.update()
 
-if __name__ == "__main__":
+def Run():
+    from Menu import main_menu
     main()
+
+if __name__ == "__main__":
+    Run()

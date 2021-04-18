@@ -53,6 +53,7 @@ class Player(pygame.sprite.Sprite):
         
         self.salto = pygame.mixer.Sound("Assets/Sound/jumpSound1.ogg") 
         self.recoger = pygame.mixer.Sound("Assets/Sound/pickupSound1.ogg")    
+        self.deadsound =pygame.mixer.Sound("Assets/Sound/Dead.ogg")   
              
         # self.walking_frames_l = [pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (1).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (2).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (3).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (4).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (5).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (6).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (7).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (8).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (9).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (10).png')]
         self.walking_frames = constants.PLAYER_WALKING_FRAMES
@@ -177,6 +178,8 @@ class Player(pygame.sprite.Sprite):
     def dead(self):
         if not self.isDead:
             self.lifes -= 1
+            self.deadsound.play()
+
 
         if self.indexDead < len(self.dying_frames):
             self.countDeadFrame += 1
