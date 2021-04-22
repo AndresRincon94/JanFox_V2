@@ -148,8 +148,18 @@ BLACKBERRY   = (os.path.join("Assets", "Sprites/Objects/Fruits/shadow/32.png"), 
 # Desert
 DESERT_CACTUS  = (os.path.join("Assets", "Levels/Desert/Objects/Cactus (1).png"), 79, 80)
 DESERT_CACTUS_2  = (os.path.join("Assets", "Levels/Desert/Objects/Cactus (3).png"), 67, 73)
+DESERT_CACTUS_3 = (os.path.join("Assets", "Levels/Desert/Objects/Cactus (2).png"), 50, 32)
 DESERT_STONE = (os.path.join("Assets", "Levels/Desert/Objects/Stone.png"), 68, 40)
 DESERT_SKELETON = (os.path.join("Assets", "Levels/Desert/Objects/Skeleton.png"), 90, 32)
+DESERT_SIGNARROW = (os.path.join("Assets", "Levels/Desert/Objects/SignArrow.png"), 130, 100)
+DESERT_BUSH = (os.path.join("Assets", "Levels/Desert/Objects/Bush (1).png"), 150, 100)
+DESERT_BUSH_2 = (os.path.join("Assets", "Levels/Desert/Objects/Bush (2).png"), 68, 40)
+DESERT_GRASS_1 = (os.path.join("Assets", "Levels/Desert/Objects/Grass (1).png"), 68, 40)
+DESERT_GRASS_2 = (os.path.join("Assets", "Levels/Desert/Objects/Grass (2).png"), 68, 40)
+DESERT_TREE = (os.path.join("Assets", "Levels/Desert/Objects/Tree.png"), 400, 200)
+DESERT_CRATE = (os.path.join("Assets", "Levels/Desert/Objects/Crate.png"), 60, 60)
+DESERT_SIGN = (os.path.join("Assets", "Levels/Desert/Objects/Sign.png"), 60, 60)
+
 
 # Jungle
 
