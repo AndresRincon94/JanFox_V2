@@ -206,17 +206,32 @@ class Level_02(Level):
 
         self.background = pygame.image.load("Desert.png").convert()
         self.background.set_colorkey(constants.WHITE)
-        self.level_limit = -1000
+        self.level_limit = -6000
 
         # Array with type of platform, and x, y location of the platform.
-        platform_array = [ [constants.DESERT_GRASS_LEFT, 430, 500],
-                  [constants.DESERT_GRASS_MIDDLE, 500, 500],
-                  [constants.DESERT_GRASS_MIDDLE, 570, 500],
-                  [constants.DESERT_GRASS_RIGHT, 640, 500],
-                  [constants.DESERT_GRASS_LEFT, 800, 400],
-                  [constants.DESERT_GRASS_MIDDLE, 870, 400],
-                  [constants.DESERT_GRASS_RIGHT, 940, 400]
-                  ]
+        platform_array = [ 
+                [constants.DESERT_GRASS_LEFT, 570, 450],
+                [constants.DESERT_GRASS_MIDDLE, 640, 450],
+                [constants.DESERT_GRASS_RIGHT, 710, 450],
+                [constants.DESERT_GRASS_LEFT, 1650, 450],
+                [constants.DESERT_GRASS_MIDDLE, 1720, 450],
+                [constants.DESERT_GRASS_RIGHT, 1790, 450],
+                [constants.DESERT_GRASS_LEFT, 2150, 150],
+                [constants.DESERT_GRASS_MIDDLE, 2220, 150],
+                [constants.DESERT_GRASS_RIGHT, 2290, 150],
+                [constants.DESERT_GRASS_LEFT, 2950, 450],
+                [constants.DESERT_GRASS_MIDDLE, 3020, 450],
+                [constants.DESERT_GRASS_RIGHT, 3090, 450],
+                [constants.DESERT_CRATE, 3550, 520],
+                [constants.DESERT_GRASS_LEFT, 4000, 450],
+                [constants.DESERT_GRASS_MIDDLE, 4070, 450],
+                [constants.DESERT_GRASS_MIDDLE, 4140, 450],
+                [constants.DESERT_GRASS_MIDDLE, 4210, 450],
+                [constants.DESERT_GRASS_RIGHT, 4280, 450],
+                [constants.DESERT_GRASS_LEFT, 4800, 130],
+                [constants.DESERT_GRASS_MIDDLE, 4870, 130],
+                [constants.DESERT_GRASS_RIGHT, 4940, 130],
+                ]
 
         # Go through the array above and add platforms
         for platform in platform_array:
@@ -227,8 +242,8 @@ class Level_02(Level):
             self.platform_list.add(block)
             
         # Array with type of enemy, and x, and patrol distance of the enemy.
-        enemy_array = [ [enemies.DESERT_ENEMY, 430, 435, 245],
-                  [enemies.SNOW_ENEMY, 580, 435, 120]
+        enemy_array = [ [enemies.DESERT_ENEMY, 2300, 435, 245],
+                  #[enemies.SNOW_ENEMY, 580, 435, 120]
                   ]
 
         # Go through the array above and add enemies
@@ -240,19 +255,48 @@ class Level_02(Level):
             self.enemy_list.add(enem)
 
         # Array with type x and y of good object.
-        good_object_array = [ [constants.BLACKBERRY, 480, 285],
-                            [constants.BLACKBERRY, 1020, 280],
+        good_object_array = [ [constants.BLACKBERRY, 640, 285],
+                            [constants.BLACKBERRY, 1150, 385],
                             [constants.BLACKBERRY, 1800, 280],
-                            [constants.BLACKBERRY, 1810, 290],
-                            [constants.BLACKBERRY, 1820, 280]
+                            [constants.BLACKBERRY, 2290, 90],
+                            [constants.BLACKBERRY, 3400, 380],
+                            [constants.BLACKBERRY, 3700, 380],
+                            [constants.BLACKBERRY, 5550, 380],
+                            [constants.BLACKBERRY, 4860, 70],
                             ]
 
         # Array with type x and y of bad object.
-        bad_object_array = [ [constants.DESERT_CACTUS, 900, 320]]
+        bad_object_array = [ [constants.DESERT_BUSH_2, 1150, 550],
+                             [constants.DESERT_BUSH_2, 1200, 550],
+                             [constants.DESERT_BUSH_2, 1250, 550],
+                             [constants.DESERT_BUSH_2, 5500, 550],
+                             [constants.DESERT_BUSH_2, 5550, 550],
+                             [constants.DESERT_BUSH_2, 5600, 550],
+                            ]
         
         # Array with type x and y of standard object.
-        standard_object_array = [ [constants.DESERT_STONE, 640, 460],
-                  [constants.DESERT_CACTUS_2, 430, 430],
+        standard_object_array = [ [constants.DESERT_TREE, 10,370],
+                  [constants.DESERT_GRASS_1, 150,530],  
+                  [constants.DESERT_GRASS_2, 180,530],
+                  [constants.DESERT_GRASS_1, 210,530],
+                  [constants.DESERT_GRASS_2, 240,530],
+                  [constants.DESERT_GRASS_1, 270,530],
+                  [constants.DESERT_CACTUS, 690, 370],
+                  [constants.DESERT_CACTUS_3, 1720, 420],
+                  [constants.DESERT_TREE, 2220,370],
+                  [constants.DESERT_GRASS_1, 2140, 110],
+                  [constants.DESERT_GRASS_2, 2160, 110],
+                  [constants.DESERT_GRASS_1, 2180, 110],
+                  [constants.DESERT_CACTUS_2, 3000, 380],
+                  [constants.DESERT_BUSH, 4030, 350],
+                  [constants.DESERT_TREE, 4650,370],
+                  [constants.DESERT_GRASS_1, 4800,530],
+                  [constants.DESERT_GRASS_2, 4830,530],
+                  [constants.DESERT_GRASS_1, 4850,530],
+                  [constants.DESERT_GRASS_2, 4870,530],
+                  [constants.DESERT_GRASS_1, 4890,530],
+                  [constants.DESERT_SIGN, 4950,70],
+                  [constants.DESERT_SIGNARROW, 6600,470],
                   ]
 
         # Go through the array above and add good object
@@ -281,7 +325,17 @@ class Level_02(Level):
 
         # Add a custom moving platform
         block = platforms.MovingPlatform(constants.DESERT_STONE_PLATFORM_TOP_MIDDLE)
-        block.rect.x = 1500
+        block.rect.x = 2000
+        block.rect.y = 300
+        block.boundary_top = 100
+        block.boundary_bottom = 550
+        block.change_y = -1
+        block.player = self.player
+        block.level = self
+        self.platform_list.add(block)
+
+        block = platforms.MovingPlatform(constants.DESERT_STONE_PLATFORM_TOP_MIDDLE)
+        block.rect.x = 4530
         block.rect.y = 300
         block.boundary_top = 100
         block.boundary_bottom = 550
