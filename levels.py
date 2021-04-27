@@ -93,6 +93,7 @@ class Level_01(Level):
         """ Create level 1. """
 
         # Call the parent constructor
+
         Level.__init__(self, player)
         self.background = pygame.image.load("Assets/Levels/Jungle/Bg/Jungle.png").convert()
         self.background.set_colorkey(constants.WHITE)
@@ -206,6 +207,7 @@ class Level_02(Level):
 
         # Call the parent constructor
         Level.__init__(self, player)
+
 
         self.background = pygame.image.load("Assets/Levels/Desert/Bg/Desert.png").convert()
         self.background.set_colorkey(constants.WHITE)

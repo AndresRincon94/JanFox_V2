@@ -282,7 +282,7 @@ Objects Fruits Desert
 """
 
 BLACKBERRY = (os.path.join("Assets", "Levels/Desert/Objects/Blackberry.png"), 70, 70)
-# BLACKBERRY = (os.path.join("Assets", "Levels/Desert/Objects/manzana.png"), 30, 30)
+
 
 
 # Jungle
@@ -304,7 +304,7 @@ Objects Fruits Jungle
 """
 
 # BLACKBERRY = (os.path.join("Assets", "Levels/Desert/Objects/Blackberry.png"), 70, 70)
-# BLACKBERRY = (os.path.join("Assets", "Levels/Desert/Objects/manzana.png"), 30, 30)
+
 
 
 # Snow
@@ -319,10 +319,9 @@ SNOW_STONE = (os.path.join("Assets", "Levels/Snow/Objects/Stone.png"), 90, 32)
 SNOW_TREE_1 = (os.path.join("Assets", "Levels/Snow/Objects/Tree_1.png"), 200, 300)
 SNOW_TREE_2 = (os.path.join("Assets", "Levels/Snow/Objects/Tree_2.png"), 120, 180)
 
-
 """
 Objects Fruits Snow
 """
 
 # BLACKBERRY = (os.path.join("Assets", "Levels/Desert/Objects/Blackberry.png"), 70, 70)
-# BLACKBERRY = (os.path.join("Assets", "Levels/Desert/Objects/manzana.png"), 30, 30)
+

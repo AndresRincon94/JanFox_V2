@@ -12,7 +12,6 @@ class Platform(pygame.sprite.Sprite):
             an array of 5 numbers like what's defined at the top of this
             code. """
         pygame.sprite.Sprite.__init__(self)
-
         # Grab the image for this platform
         self.image = pygame.transform.scale(pygame.image.load(sprite_sheet_data[0]),
                                             (sprite_sheet_data[1], sprite_sheet_data[2]))
