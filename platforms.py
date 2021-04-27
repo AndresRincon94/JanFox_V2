@@ -2,9 +2,7 @@
 Module for managing platforms.
 """
 import pygame
-import os
 
-from spritesheet_functions import SpriteSheet
 
 class Platform(pygame.sprite.Sprite):
     """ Platform the user can jump on """
@@ -15,9 +13,9 @@ class Platform(pygame.sprite.Sprite):
             code. """
         pygame.sprite.Sprite.__init__(self)
 
-        sprite_sheet = SpriteSheet("tiles_spritesheet.png")
         # Grab the image for this platform
-        self.image = pygame.transform.scale(pygame.image.load(sprite_sheet_data[0]), (sprite_sheet_data[1], sprite_sheet_data[2]))
+        self.image = pygame.transform.scale(pygame.image.load(sprite_sheet_data[0]),
+                                            (sprite_sheet_data[1], sprite_sheet_data[2]))
 
         self.rect = self.image.get_rect()
 

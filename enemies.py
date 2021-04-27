@@ -4,14 +4,12 @@ controlled sprite on the screen.
 """
 import pygame
 import constants
-import os
-
 from platforms import MovingPlatform
-# # from spritesheet_functions import SpriteSheetk
 
 DESERT_ENEMY = 1
 JUNGLE_ENEMY = 2
-SNOW_ENEMY   = 3
+SNOW_ENEMY = 3
+
 
 class Enemy(pygame.sprite.Sprite):
     """ This class represents the bar at the bottom that the enemy
@@ -22,7 +20,7 @@ class Enemy(pygame.sprite.Sprite):
     change_x = 0
     change_y = 0
 
-    #Set width and height
+    # Set width and height
     height = 0
     width = 0
 
@@ -49,15 +47,15 @@ class Enemy(pygame.sprite.Sprite):
 
         self.distance = distance
 
-        if enemy_type == DESERT_ENEMY:  
+        if enemy_type == DESERT_ENEMY:
             self.walking_frames = constants.ENEMY_DESERT_WALKING_FRAMES
             self.width = 70
             self.height = 100
-        elif enemy_type ==  JUNGLE_ENEMY:  
+        elif enemy_type == JUNGLE_ENEMY:
             self.walking_frames = constants.ENEMY_JUNGLE_WALKING_FRAMES
             self.width = 100
             self.height = 100
-        elif enemy_type ==  SNOW_ENEMY:  
+        elif enemy_type == SNOW_ENEMY:
             self.walking_frames = constants.ENEMY_SNOW_WALKING_FRAMES
             self.width = 70
             self.height = 100
@@ -83,7 +81,8 @@ class Enemy(pygame.sprite.Sprite):
             self.image = pygame.transform.scale(self.walking_frames[frame], (self.width, self.height))
         else:
             frame = (self.rect.x // 30) % len(self.walking_frames)
-            self.image = pygame.transform.flip(pygame.transform.scale(self.walking_frames[frame], (self.width, self.height)), True, False)
+            self.image = pygame.transform.flip(
+                pygame.transform.scale(self.walking_frames[frame], (self.width, self.height)), True, False)
 
         # See if we hit anything
         block_hit_list = pygame.sprite.spritecollide(self, self.player.level.platform_list, False)
@@ -115,14 +114,14 @@ class Enemy(pygame.sprite.Sprite):
             if isinstance(block, MovingPlatform):
                 self.rect.x += block.change_x
 
-    # movimiento del enemigo
+    # enemy movement
     def move(self):
         if self.goRight:
-            if self.calc_distance > self.distance: 
+            if self.calc_distance > self.distance:
                 self.goRight = False
                 self.calc_distance = 0
         else:
-            if self.calc_distance < self.distance * -1:  
+            if self.calc_distance < self.distance * -1:
                 self.goRight = True
                 self.calc_distance = 0
 

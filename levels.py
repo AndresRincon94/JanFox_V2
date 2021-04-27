@@ -5,7 +5,8 @@ import platforms
 import enemies
 import objects
 
-class Level():
+
+class Level:
     """ This is a generic super-class used to define a level.
         Create a child class for each level with level-specific
         info. """
@@ -45,7 +46,6 @@ class Level():
         self.standard_object_list.update()
         pygame.display.update()
 
-
     def draw(self, screen):
         """ Draw everything on this level. """
 
@@ -53,14 +53,14 @@ class Level():
         # We don't shift the background as much as the sprites are shifted
         # to give a feeling of depth.
         screen.fill(constants.WHITE)
-        screen.blit(self.background,(self.world_shift // 3,0))
+        screen.blit(self.background, (self.world_shift // 3, 0))
 
         # Draw all the sprite lists that we have
         self.platform_list.draw(screen)
         self.good_object_list.draw(screen)
         self.bad_object_list.draw(screen)
         self.standard_object_list.draw(screen)
-        self.enemy_list.draw(screen)        
+        self.enemy_list.draw(screen)
 
     def shift_world(self, shift_x):
         """ When the user moves left/right and we need to scroll everything: """
@@ -83,7 +83,8 @@ class Level():
 
         for obj in self.standard_object_list:
             obj.rect.x += shift_x
-            
+
+
 # Create platforms for the level
 class Level_01(Level):
     """ Definition for level 1. """
@@ -92,26 +93,28 @@ class Level_01(Level):
         """ Create level 1. """
 
         # Call the parent constructor
-        Level.__init__(self, player)        
-        self.background = pygame.image.load("Jungle.png").convert()
+        Level.__init__(self, player)
+        self.background = pygame.image.load("Assets/Levels/Jungle/Bg/Jungle.png").convert()
         self.background.set_colorkey(constants.WHITE)
-        self.level_limit = -2500
+        self.level_limit = -4500
 
         # Array with type of platform, and x, y location of the platform.
-        platform_array = [ [constants.DESERT_GRASS_LEFT, 430, 500],
-                  [constants.DESERT_GRASS_MIDDLE, 500, 500],
-                  [constants.DESERT_GRASS_MIDDLE, 570, 500],
-                  [constants.DESERT_GRASS_RIGHT, 640, 500],
-                  [constants.DESERT_GRASS_LEFT, 800, 400],
-                  [constants.DESERT_GRASS_MIDDLE, 870, 400],
-                  [constants.DESERT_GRASS_RIGHT, 940, 400],
-                  [constants.DESERT_GRASS_LEFT, 1100, 500],
-                  [constants.DESERT_GRASS_MIDDLE, 1170, 500],
-                  [constants.DESERT_GRASS_RIGHT, 1240, 500],
-                  [constants.DESERT_STONE_PLATFORM_TOP_LEFT, 1120, 280],
-                  [constants.DESERT_STONE_PLATFORM_TOP_MIDDLE, 1190, 280],
-                  [constants.DESERT_STONE_PLATFORM_TOP_RIGHT, 1260, 280],
-                  ]
+        platform_array = [[constants.DESERT_GRASS_LEFT, 430, 500],
+                          [constants.DESERT_GRASS_MIDDLE, 500, 500],
+                          [constants.DESERT_GRASS_MIDDLE, 570, 500],
+                          [constants.DESERT_GRASS_RIGHT, 640, 500],
+                          [constants.DESERT_GRASS_LEFT, 800, 400],
+                          [constants.DESERT_GRASS_MIDDLE, 870, 400],
+                          [constants.DESERT_GRASS_RIGHT, 940, 400],
+                          [constants.DESERT_GRASS_LEFT, 1100, 500],
+                          [constants.DESERT_GRASS_MIDDLE, 1170, 500],
+                          [constants.DESERT_GRASS_RIGHT, 1240, 500],
+                          [constants.DESERT_STONE_PLATFORM_TOP_LEFT, 1120, 280],
+                          [constants.DESERT_STONE_PLATFORM_TOP_MIDDLE, 1190, 280],
+                          [constants.DESERT_STONE_PLATFORM_TOP_RIGHT, 1260, 280],
+                          ]
+
+
 
         # Go through the array above and add platforms
         for platform in platform_array:
@@ -120,12 +123,12 @@ class Level_01(Level):
             block.rect.y = platform[2]
             block.player = self.player
             self.platform_list.add(block)
-            
+
         # Array with type of enemy, and x, and distance of the enemy.
-        enemy_array = [ [enemies.DESERT_ENEMY, 430, 435, 245],
-                  [enemies.SNOW_ENEMY, 580, 435, 120],
-                  [enemies.JUNGLE_ENEMY, 780, 300, 150]
-                  ]
+        enemy_array = [[enemies.DESERT_ENEMY, 430, 435, 245],
+                       [enemies.SNOW_ENEMY, 580, 435, 120],
+                       [enemies.JUNGLE_ENEMY, 780, 300, 150]
+                       ]
 
         # Go through the array above and add enemies
         for enemy in enemy_array:
@@ -136,36 +139,36 @@ class Level_01(Level):
             self.enemy_list.add(enem)
 
         # Array with type x and y of good object.
-        good_object_array = [ [constants.BLACKBERRY, 480, 285],
-                            [constants.BLACKBERRY, 1020, 280],
-                            [constants.BLACKBERRY, 1800, 280],
-                            [constants.BLACKBERRY, 1810, 290],
-                            [constants.BLACKBERRY, 1820, 280],
-                            [constants.BLACKBERRY, 1900, 280],
-                            [constants.BLACKBERRY, 1910, 290],
-                            [constants.BLACKBERRY, 1920, 280],
-                            [constants.BLACKBERRY, 2000, 280],
-                            [constants.BLACKBERRY, 2010, 290],
-                            [constants.BLACKBERRY, 2020, 280]
-                            ]
+        good_object_array = [[constants.BLACKBERRY, 480, 285],
+                             [constants.BLACKBERRY, 1020, 280],
+                             [constants.BLACKBERRY, 1800, 280],
+                             [constants.BLACKBERRY, 1810, 290],
+                             [constants.BLACKBERRY, 1820, 280],
+                             [constants.BLACKBERRY, 1900, 280],
+                             [constants.BLACKBERRY, 1910, 290],
+                             [constants.BLACKBERRY, 1920, 280],
+                             [constants.BLACKBERRY, 2000, 280],
+                             [constants.BLACKBERRY, 2010, 290],
+                             [constants.BLACKBERRY, 2020, 280]
+                             ]
 
         # Array with type x and y of bad object.
-        bad_object_array = [ [constants.DESERT_CACTUS, 900, 320]]
-        
+        bad_object_array = [[constants.DESERT_CACTUS, 900, 320]]
+
         # Array with type x and y of standard object.
-        standard_object_array = [ [constants.DESERT_STONE, 640, 460],
-                  [constants.DESERT_CACTUS_2, 430, 430],
-                  [constants.DESERT_SKELETON, 1130, 470],
-                  ]
+        standard_object_array = [[constants.DESERT_STONE, 640, 460],
+                                 [constants.DESERT_CACTUS_2, 430, 430],
+                                 [constants.DESERT_SKELETON, 1130, 470],
+                                 ]
 
         # Go through the array above and add good object
         for good_object in good_object_array:
             obj = objects.Object(good_object[0])
             obj.rect.x = good_object[1]
             obj.rect.y = good_object[2]
-            obj.player = self.player            
+            obj.player = self.player
             self.good_object_list.add(obj)
-            
+
         # Go through the array above and add bad object
         for bad_object in bad_object_array:
             obj = objects.Object(bad_object[0])
@@ -204,19 +207,19 @@ class Level_02(Level):
         # Call the parent constructor
         Level.__init__(self, player)
 
-        self.background = pygame.image.load("Desert.png").convert()
+        self.background = pygame.image.load("Assets/Levels/Desert/Bg/Desert.png").convert()
         self.background.set_colorkey(constants.WHITE)
         self.level_limit = -1000
 
         # Array with type of platform, and x, y location of the platform.
-        platform_array = [ [constants.DESERT_GRASS_LEFT, 430, 500],
-                  [constants.DESERT_GRASS_MIDDLE, 500, 500],
-                  [constants.DESERT_GRASS_MIDDLE, 570, 500],
-                  [constants.DESERT_GRASS_RIGHT, 640, 500],
-                  [constants.DESERT_GRASS_LEFT, 800, 400],
-                  [constants.DESERT_GRASS_MIDDLE, 870, 400],
-                  [constants.DESERT_GRASS_RIGHT, 940, 400]
-                  ]
+        platform_array = [[constants.DESERT_GRASS_LEFT, 430, 500],
+                          [constants.DESERT_GRASS_MIDDLE, 500, 500],
+                          [constants.DESERT_GRASS_MIDDLE, 570, 500],
+                          [constants.DESERT_GRASS_RIGHT, 640, 500],
+                          [constants.DESERT_GRASS_LEFT, 800, 400],
+                          [constants.DESERT_GRASS_MIDDLE, 870, 400],
+                          [constants.DESERT_GRASS_RIGHT, 940, 400]
+                          ]
 
         # Go through the array above and add platforms
         for platform in platform_array:
@@ -225,11 +228,11 @@ class Level_02(Level):
             block.rect.y = platform[2]
             block.player = self.player
             self.platform_list.add(block)
-            
+
         # Array with type of enemy, and x, and patrol distance of the enemy.
-        enemy_array = [ [enemies.DESERT_ENEMY, 430, 435, 245],
-                  [enemies.SNOW_ENEMY, 580, 435, 120]
-                  ]
+        enemy_array = [[enemies.DESERT_ENEMY, 430, 435, 245],
+                       [enemies.SNOW_ENEMY, 580, 435, 120]
+                       ]
 
         # Go through the array above and add enemies
         for enemy in enemy_array:
@@ -240,29 +243,29 @@ class Level_02(Level):
             self.enemy_list.add(enem)
 
         # Array with type x and y of good object.
-        good_object_array = [ [constants.BLACKBERRY, 480, 285],
-                            [constants.BLACKBERRY, 1020, 280],
-                            [constants.BLACKBERRY, 1800, 280],
-                            [constants.BLACKBERRY, 1810, 290],
-                            [constants.BLACKBERRY, 1820, 280]
-                            ]
+        good_object_array = [[constants.BLACKBERRY, 480, 285],
+                             [constants.BLACKBERRY, 1020, 280],
+                             [constants.BLACKBERRY, 1800, 280],
+                             [constants.BLACKBERRY, 1810, 290],
+                             [constants.BLACKBERRY, 1820, 280]
+                             ]
 
         # Array with type x and y of bad object.
-        bad_object_array = [ [constants.DESERT_CACTUS, 900, 320]]
-        
+        bad_object_array = [[constants.DESERT_CACTUS, 900, 320]]
+
         # Array with type x and y of standard object.
-        standard_object_array = [ [constants.DESERT_STONE, 640, 460],
-                  [constants.DESERT_CACTUS_2, 430, 430],
-                  ]
+        standard_object_array = [[constants.DESERT_STONE, 640, 460],
+                                 [constants.DESERT_CACTUS_2, 430, 430],
+                                 ]
 
         # Go through the array above and add good object
         for good_object in good_object_array:
             obj = objects.Object(good_object[0])
             obj.rect.x = good_object[1]
             obj.rect.y = good_object[2]
-            obj.player = self.player            
+            obj.player = self.player
             self.good_object_list.add(obj)
-            
+
         # Go through the array above and add bad object
         for bad_object in bad_object_array:
             obj = objects.Object(bad_object[0])
@@ -290,6 +293,7 @@ class Level_02(Level):
         block.level = self
         self.platform_list.add(block)
 
+
 # Create platforms for the level 2
 class Level_03(Level):
     """ Definition for level 3. """
@@ -300,19 +304,19 @@ class Level_03(Level):
         # Call the parent constructor
         Level.__init__(self, player)
 
-        self.background = pygame.image.load("Snow.png").convert()
+        self.background = pygame.image.load("Assets/Levels/Snow/Bg/Snow.png").convert()
         self.background.set_colorkey(constants.WHITE)
         self.level_limit = -1000
 
         # Array with type of platform, and x, y location of the platform.
-        platform_array = [ [constants.DESERT_GRASS_LEFT, 430, 500],
-                  [constants.DESERT_GRASS_MIDDLE, 500, 500],
-                  [constants.DESERT_GRASS_MIDDLE, 570, 500],
-                  [constants.DESERT_GRASS_RIGHT, 640, 500],
-                  [constants.DESERT_GRASS_LEFT, 800, 400],
-                  [constants.DESERT_GRASS_MIDDLE, 870, 400],
-                  [constants.DESERT_GRASS_RIGHT, 940, 400],
-                  ]
+        platform_array = [[constants.DESERT_GRASS_LEFT, 430, 500],
+                          [constants.DESERT_GRASS_MIDDLE, 500, 500],
+                          [constants.DESERT_GRASS_MIDDLE, 570, 500],
+                          [constants.DESERT_GRASS_RIGHT, 640, 500],
+                          [constants.DESERT_GRASS_LEFT, 800, 400],
+                          [constants.DESERT_GRASS_MIDDLE, 870, 400],
+                          [constants.DESERT_GRASS_RIGHT, 940, 400],
+                          ]
 
         # Go through the array above and add platforms
         for platform in platform_array:
@@ -321,10 +325,10 @@ class Level_03(Level):
             block.rect.y = platform[2]
             block.player = self.player
             self.platform_list.add(block)
-            
+
         # Array with type of enemy, and x, and patrol distance of the enemy.
-        enemy_array = [ [enemies.DESERT_ENEMY, 430, 435, 245]
-                  ]
+        enemy_array = [[enemies.DESERT_ENEMY, 430, 435, 245]
+                       ]
 
         # Go through the array above and add enemies
         for enemy in enemy_array:
@@ -335,34 +339,34 @@ class Level_03(Level):
             self.enemy_list.add(enem)
 
         # Array with type x and y of good object.
-        good_object_array = [ [constants.BLACKBERRY, 480, 285],
-                            [constants.BLACKBERRY, 1020, 280],
-                            [constants.BLACKBERRY, 1800, 280],
-                            [constants.BLACKBERRY, 1810, 290],
-                            [constants.BLACKBERRY, 1910, 290],
-                            [constants.BLACKBERRY, 1920, 280],
-                            [constants.BLACKBERRY, 2000, 280],
-                            [constants.BLACKBERRY, 2010, 290],
-                            [constants.BLACKBERRY, 2020, 280]
-                            ]
+        good_object_array = [[constants.BLACKBERRY, 480, 285],
+                             [constants.BLACKBERRY, 1020, 280],
+                             [constants.BLACKBERRY, 1800, 280],
+                             [constants.BLACKBERRY, 1810, 290],
+                             [constants.BLACKBERRY, 1910, 290],
+                             [constants.BLACKBERRY, 1920, 280],
+                             [constants.BLACKBERRY, 2000, 280],
+                             [constants.BLACKBERRY, 2010, 290],
+                             [constants.BLACKBERRY, 2020, 280]
+                             ]
 
         # Array with type x and y of bad object.
-        bad_object_array = [ [constants.DESERT_CACTUS, 900, 320]]
-        
+        bad_object_array = [[constants.DESERT_CACTUS, 900, 320]]
+
         # Array with type x and y of standard object.
-        standard_object_array = [ [constants.DESERT_STONE, 640, 460],
-                  [constants.DESERT_CACTUS_2, 430, 430],
-                  [constants.DESERT_SKELETON, 1130, 470],
-                  ]
+        standard_object_array = [[constants.DESERT_STONE, 640, 460],
+                                 [constants.DESERT_CACTUS_2, 430, 430],
+                                 [constants.DESERT_SKELETON, 1130, 470],
+                                 ]
 
         # Go through the array above and add good object
         for good_object in good_object_array:
             obj = objects.Object(good_object[0])
             obj.rect.x = good_object[1]
             obj.rect.y = good_object[2]
-            obj.player = self.player            
+            obj.player = self.player
             self.good_object_list.add(obj)
-            
+
         # Go through the array above and add bad object
         for bad_object in bad_object_array:
             obj = objects.Object(bad_object[0])

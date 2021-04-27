@@ -4,10 +4,8 @@ controlled sprite on the screen.
 """
 import pygame
 import constants
-import os
-
 from platforms import MovingPlatform
-# # from spritesheet_functions import SpriteSheetk
+
 
 class Player(pygame.sprite.Sprite):
     """ This class represents the bar at the bottom that the player
@@ -22,6 +20,7 @@ class Player(pygame.sprite.Sprite):
     # of our player
     walking_frames = []
     dying_frames = []
+    jump_frames = []
 
     # What direction is the player facing?
     direction = "R"
@@ -30,7 +29,7 @@ class Player(pygame.sprite.Sprite):
     # Items of dead
     countDeadFrame = 0
     countReviveFrame = 0
-    indexDead = 0    
+    indexDead = 0
     isDead = False
 
     # List of sprites we can bump against
@@ -53,15 +52,14 @@ class Player(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
 
         self.victory = False
-        
-        self.salto = pygame.mixer.Sound("Assets/Sound/jumpSound1.ogg") 
-        self.recoger = pygame.mixer.Sound("Assets/Sound/pickupSound1.ogg")    
-        self.deadsound =pygame.mixer.Sound("Assets/Sound/Dead.ogg")   
-             
-        # self.walking_frames_l = [pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (1).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (2).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (3).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (4).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (5).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (6).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (7).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (8).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (9).png'),pygame.image.load('spritesheet_example/Assets/Sprites/personage/Fox/Walk/Walk (10).png')]
+
+        self.salto = pygame.mixer.Sound("Assets/Sound/jumpSound1.ogg")
+        self.recoger = pygame.mixer.Sound("Assets/Sound/pickupSound1.ogg")
+        self.deadsound = pygame.mixer.Sound("Assets/Sound/Dead.ogg")
+
         self.walking_frames = constants.PLAYER_WALKING_FRAMES
         self.dying_frames = constants.PLAYER_DYING_FRAMES
-        
+        self.jump_frames = constants.PLAYER_JUMPYNG_FRAMES
         # Set the image the player starts with
         self.image = pygame.transform.scale(self.walking_frames[0], (70, 100))
 
@@ -92,7 +90,7 @@ class Player(pygame.sprite.Sprite):
             if isinstance(block, MovingPlatform):
                 self.rect.x += block.change_x
 
-        if not self.isDead:                        
+        if not self.isDead:
             # Move left/right
             self.rect.x += self.change_x
             pos = self.rect.x + self.level.world_shift
@@ -101,7 +99,8 @@ class Player(pygame.sprite.Sprite):
                 self.image = pygame.transform.scale(self.walking_frames[frame], (70, 100))
             else:
                 frame = (pos // 30) % len(self.walking_frames)
-                self.image = pygame.transform.flip(pygame.transform.scale(self.walking_frames[frame], (70, 100)), True, False)
+                self.image = pygame.transform.flip(pygame.transform.scale(self.walking_frames[frame], (70, 100)), True,
+                                                   False)
 
             # See if we hit anything
             block_hit_list = pygame.sprite.spritecollide(self, self.level.platform_list, False)
@@ -129,7 +128,7 @@ class Player(pygame.sprite.Sprite):
             for enemy in enemy_hit_list:
                 # Player die
                 self.loseHealth(10)
-                
+
             # Check and see if we hit bad Object
             bad_object_hit_list = pygame.sprite.spritecollide(self, self.level.bad_object_list, False)
             for bad_object in bad_object_hit_list:
@@ -138,7 +137,7 @@ class Player(pygame.sprite.Sprite):
                     self.loseHealth(self.health)
         else:
             self.dead()
-        
+
     def calc_grav(self):
         """ Calculate effect of gravity. """
         if self.change_y == 0:
@@ -150,14 +149,14 @@ class Player(pygame.sprite.Sprite):
         if self.rect.y >= constants.SCREEN_HEIGHT - self.rect.height and self.change_y >= 0:
             self.change_y = 0
             self.rect.y = constants.SCREEN_HEIGHT - self.rect.height
-        
+
     def jump(self):
         """ Called when user hits 'jump' button. """
 
         # move down a bit and see if there is a platform below us.
         # Move down 2 pixels because it doesn't work well if we only move down 1
         # when working with a platform moving down.
-        
+
         self.rect.y += 2
         platform_hit_list = pygame.sprite.spritecollide(self, self.level.platform_list, False)
         self.rect.y -= 2
@@ -183,11 +182,10 @@ class Player(pygame.sprite.Sprite):
             self.lifes -= 1
             self.deadsound.play()
 
-
         if self.indexDead < len(self.dying_frames):
             self.countDeadFrame += 1
             if self.countDeadFrame > 4:
-                self.image = pygame.transform.scale(self.dying_frames[self.indexDead], (115, 115))        
+                self.image = pygame.transform.scale(self.dying_frames[self.indexDead], (115, 115))
                 self.indexDead += 1
                 self.countDeadFrame = 0
             self.isDead = True
