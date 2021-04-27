@@ -93,7 +93,7 @@ class Level_01(Level):
 
         # Call the parent constructor
         Level.__init__(self, player)        
-        self.background = pygame.image.load("Jungle.png").convert()
+        self.background = pygame.image.load("Assets/Levels/jungle/BG/Jungle.png").convert()
         self.background.set_colorkey(constants.WHITE)
         self.level_limit = -2500
 
@@ -204,7 +204,7 @@ class Level_02(Level):
         # Call the parent constructor
         Level.__init__(self, player)
 
-        self.background = pygame.image.load("Desert.png").convert()
+        self.background = pygame.image.load("Assets/Levels/Desert/Desert.png").convert()
         self.background.set_colorkey(constants.WHITE)
         self.level_limit = -1000
 
@@ -300,7 +300,7 @@ class Level_03(Level):
         # Call the parent constructor
         Level.__init__(self, player)
 
-        self.background = pygame.image.load("Snow.png").convert()
+        self.background = pygame.image.load("Assets/Levels/Snow/BG/Snow.png").convert()
         self.background.set_colorkey(constants.WHITE)
         self.level_limit = -1000
 
