@@ -284,11 +284,8 @@ Objects Fruits Desert
 """
 
 BLACKBERRY = (os.path.join("Assets", "Levels/Desert/Objects/Blackberry.png"), 70, 70)
-<<<<<<< HEAD
 NUT= (os.path.join("Assets", "Levels/Objects/Fruits/shadow/9.png"), 80, 80)
 
-=======
->>>>>>> 113ce16220e39f751d18af945e0856e247377d13
 
 # Jungle
 JUNGLE_BUSH_1 = (os.path.join("Assets", "Levels/Jungle/Objects/Bush(1).png"), 79, 80)
