@@ -237,22 +237,23 @@ JUNGLE_STONE_PLATFORM_WAVES = (os.path.join("Assets", "Levels/Jungle/Tiles/17.pn
 JUNGLE_STONE_PLATFORM_WATER = (os.path.join("Assets", "Levels/Jungle/Tiles/18.png"), 70, 70)
 
 # Snow
-SNOW_STONE_PLATFORM_TOP_LEFT_1 = (os.path.join("Assets", "Levels/Snow/Tiles/1.png"), 70, 70)
+
+SNOW_STONE_PLATFORM_TOP_LEFT   = (os.path.join("Assets", "Levels/Snow/Tiles/1.png"), 70, 70)
 SNOW_STONE_PLATFORM_TOP_MIDDLE = (os.path.join("Assets", "Levels/Snow/Tiles/2.png"), 70, 70)
-SNOW_STONE_PLATFORM_TOP_RIGHT_1 = (os.path.join("Assets", "Levels/Snow/Tiles/3.png"), 70, 70)
+SNOW_STONE_PLATFORM_TOP_RIGHT  = (os.path.join("Assets", "Levels/Snow/Tiles/3.png"), 70, 70)
 SNOW_STONE_PLATFORM_MIDDLE_LEFT = (os.path.join("Assets", "Levels/Snow/Tiles/4.png"), 70, 70)
-SNOW_STONE_PLATFORM_MIDDLE_1 = (os.path.join("Assets", "Levels/Snow/Tiles/5.png"), 70, 70)
+SNOW_STONE_PLATFORM_MIDDLE     = (os.path.join("Assets", "Levels/Snow/Tiles/5.png"), 70, 70)
 SNOW_STONE_PLATFORM_MIDDLE_RIGHT = (os.path.join("Assets", "Levels/Snow/Tiles/6.png"), 70, 70)
 SNOW_STONE_PLATFORM_TOP_RIGHT_2 = (os.path.join("Assets", "Levels/Snow/Tiles/7.png"), 70, 70)
 SNOW_STONE_PLATFORM_MIDDLE_2 = (os.path.join("Assets", "Levels/Snow/Tiles/8.png"), 70, 70)
-SNOW_STONE_PLATFORM_BOTTOM_MIDDLE_1 = (os.path.join("Assets", "Levels/Snow/Tiles/9.png"), 70, 70)
+SNOW_STONE_PLATFORM_BOTTOM_MIDDLE = (os.path.join("Assets", "Levels/Snow/Tiles/9.png"), 70, 70)
 SNOW_STONE_PLATFORM_MIDDLE_3 = (os.path.join("Assets", "Levels/Snow/Tiles/10.png"), 70, 70)
 SNOW_STONE_PLATFORM_TOP_LEFT_2 = (os.path.join("Assets", "Levels/Snow/Tiles/11.png"), 70, 70)
-SNOW_STONE_PLATFORM_BOTTOM_LEFT = (os.path.join("Assets", "Levels/Snow/Tiles/12.png"), 70, 70)
-SNOW_STONE_PLATFORM_BOTTOM_RIGHT = (os.path.join("Assets", "Levels/Snow/Tiles/13.png"), 70, 70)
-SNOW_STONE_PLATFORM_TOP_LEFT_3 = (os.path.join("Assets", "Levels/Snow/Tiles/14.png"), 70, 50)
-SNOW_STONE_PLATFORM_BOTTOM_MIDDLE_2 = (os.path.join("Assets", "Levels/Snow/Tiles/15.png"), 70, 50)
-SNOW_STONE_PLATFORM_TOP_RIGHT_3 = (os.path.join("Assets", "Levels/Snow/Tiles/16.png"), 70, 50)
+SNOW_STONE_PLATFORM_BOTTOM_LEFT   = (os.path.join("Assets", "Levels/Snow/Tiles/12.png"), 70, 70)
+SNOW_STONE_PLATFORM_BOTTOM_RIGHT  = (os.path.join("Assets", "Levels/Snow/Tiles/13.png"), 70, 70)
+SNOW_GRASS_LEFT    = (os.path.join("Assets", "Levels/Snow/Tiles/14.png"), 70, 50)
+SNOW_GRASS_MIDDLE  = (os.path.join("Assets", "Levels/Snow/Tiles/15.png"), 70, 50)
+SNOW_GRASS_RIGHT   = (os.path.join("Assets", "Levels/Snow/Tiles/16.png"), 70, 50)
 SNOW_STONE_PLATFORM_WAVES = (os.path.join("Assets", "Levels/Snow/Tiles/17.png"), 70, 70)
 SNOW_STONE_PLATFORM_WATER = (os.path.join("Assets", "Levels/Snow/Tiles/18.png"), 70, 70)
 
@@ -264,6 +265,7 @@ SNOW_STONE_PLATFORM_WATER = (os.path.join("Assets", "Levels/Snow/Tiles/18.png"),
 
 # Desert
 DESERT_CACTUS = (os.path.join("Assets", "Levels/Desert/Objects/Cactus(1).png"), 79, 80)
+DESERT_CACTUS_4 = (os.path.join("Assets", "Levels/Desert/Objects/Cactus(1).png"), 100, 200)
 DESERT_CACTUS_2 = (os.path.join("Assets", "Levels/Desert/Objects/Cactus(3).png"), 67, 73)
 DESERT_CACTUS_3 = (os.path.join("Assets", "Levels/Desert/Objects/Cactus(2).png"), 50, 32)
 DESERT_STONE = (os.path.join("Assets", "Levels/Desert/Objects/Stone.png"), 68, 40)
@@ -282,7 +284,7 @@ Objects Fruits Desert
 """
 
 BLACKBERRY = (os.path.join("Assets", "Levels/Desert/Objects/Blackberry.png"), 70, 70)
-
+NUT= (os.path.join("Assets", "Levels/Objects/Fruits/shadow/9.png"), 80, 80)
 
 
 # Jungle
@@ -309,15 +311,16 @@ Objects Fruits Jungle
 
 # Snow
 SNOW_CRATE = (os.path.join("Assets", "Levels/Snow/Objects/Crate.png"), 60, 60)
-SNOW_CRYSTAL = (os.path.join("Assets", "Levels/Snow/Objects/Cystal.png"), 50, 50)
-SNOW_IGLOO = (os.path.join("Assets", "Levels/Snow/Objects/Igloo.png"), 67, 73)
-SNOW_ICEBOX = (os.path.join("Assets", "Levels/Snow/Objects/IceBox.png"), 50, 32)
-SNOW_SIGN_1 = (os.path.join("Assets", "Levels/Snow/Objects/Sign_1.png"), 60, 60)
-SNOW_SIGN_2 = (os.path.join("Assets", "Levels/Snow/Objects/Sign_2.png"), 130, 100)
-SNOW_SNOWMAN = (os.path.join("Assets", "Levels/Snow/Objects/SnowMan.png"), 68, 40)
+SNOW_CRYSTAL = (os.path.join("Assets", "Levels/Snow/Objects/Crystal.png"), 50, 50)
+SNOW_IGLOO  = (os.path.join("Assets", "Levels/Snow/Objects/Igloo.png"), 150, 50)
+SNOW_ICEBOX = (os.path.join("Assets", "Levels/Snow/Objects/IceBox.png"), 80, 80)
+SNOW_SIGN = (os.path.join("Assets", "Levels/Snow/Objects/Sign_1.png"), 60, 60)
+SNOW_SIGNARROW = (os.path.join("Assets", "Levels/Snow/Objects/Sign_2.png"), 130, 100)
+SNOW_SNOWMAN = (os.path.join("Assets", "Levels/Snow/Objects/SnowMan.png"), 200, 120)
 SNOW_STONE = (os.path.join("Assets", "Levels/Snow/Objects/Stone.png"), 90, 32)
 SNOW_TREE_1 = (os.path.join("Assets", "Levels/Snow/Objects/Tree_1.png"), 200, 300)
 SNOW_TREE_2 = (os.path.join("Assets", "Levels/Snow/Objects/Tree_2.png"), 120, 180)
+
 
 """
 Objects Fruits Snow

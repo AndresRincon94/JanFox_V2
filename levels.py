@@ -100,10 +100,9 @@ class Level_01(Level):
         self.level_limit = -4500
 
         # Array with type of platform, and x, y location of the platform.
-        platform_array = [[constants.DESERT_GRASS_LEFT, 430, 500],
-                          [constants.DESERT_GRASS_MIDDLE, 500, 500],
-                          [constants.DESERT_GRASS_MIDDLE, 570, 500],
-                          [constants.DESERT_GRASS_RIGHT, 640, 500],
+        platform_array = [[constants.JUNGLE_STONE_PLATFORM_TOP_LEFT_1, 0, 530],
+                          [constants.JUNGLE_STONE_PLATFORM_TOP_MIDDLE, 70, 460],
+                          [constants.JUNGLE_STONE_PLATFORM_TOP_RIGHT_1, 570, 449],
                           [constants.DESERT_GRASS_LEFT, 800, 400],
                           [constants.DESERT_GRASS_MIDDLE, 870, 400],
                           [constants.DESERT_GRASS_RIGHT, 940, 400],
@@ -126,8 +125,8 @@ class Level_01(Level):
             self.platform_list.add(block)
 
         # Array with type of enemy, and x, and distance of the enemy.
-        enemy_array = [[enemies.DESERT_ENEMY, 430, 435, 245],
-                       [enemies.SNOW_ENEMY, 580, 435, 120],
+        enemy_array = [[enemies.JUNGLE_ENEMY, 430, 435, 245],
+                       [enemies.JUNGLE_ENEMY, 580, 435, 120],
                        [enemies.JUNGLE_ENEMY, 780, 300, 150]
                        ]
 

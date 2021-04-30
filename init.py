@@ -22,7 +22,7 @@ def main():
     player = Player()
 
     # Create all the levels
-    level_list = [levels.Level_01(player), levels.Level_02(player), levels.Level_03(player)]
+    level_list = [ levels.Level_01(player),levels.Level_02(player),levels.Level_03(player)]
 
     # Set the current level
     current_level_no = 0
@@ -167,7 +167,7 @@ def pausa():
     green2 = (20, 90, 50)
     black = (0, 0, 0)
 
-    bg = pygame.image.load('Assets/Levels/Menu.png')
+    bg = pygame.image.load('Assets/Levels/Menu/Menu.png')
     bg = pygame.transform.scale(bg, size)
 
     win = pygame.display.set_mode(size)
