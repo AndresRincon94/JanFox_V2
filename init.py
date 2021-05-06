@@ -2,15 +2,18 @@ import pygame
 import constants
 import levels
 import menu
+import time
+import threading
 
 from player import Player
+from voiceCommands import VoiceCommand
 
 
 def main():
     """ Main Program """
     pygame.init()
     pygame.mixer.music.load("Assets/Sound/backgroundSound2.mp3")
-    pygame.mixer.music.play(3)
+    # pygame.mixer.music.play(3)
 
     # Set the height and width of the screen
     size = [constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT]
@@ -20,7 +23,7 @@ def main():
 
     # Create the player
     player = Player()
-
+    
     # Create all the levels
     level_list = [levels.Level_01(player), levels.Level_02(player), levels.Level_03(player)]
 
@@ -48,6 +51,9 @@ def main():
                 done = True  # Flag that we are done so we exit this loop
 
             if not player.isDead:
+                # if event.type == pygame.USEREVENT:
+                #     print('Command 2 {}'.format(event.action))
+
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_LEFT:
                         player.go_left()
@@ -66,7 +72,7 @@ def main():
                     if event.key == pygame.K_ESCAPE:
                         pausa()
 
-                        # Update the player.
+        # Update the player.
         active_sprite_list.update()
 
         # Update items in the level
@@ -167,7 +173,7 @@ def pausa():
     green2 = (20, 90, 50)
     black = (0, 0, 0)
 
-    bg = pygame.image.load('Assets/Levels/Menu.png')
+    bg = pygame.image.load('Assets/Levels/Menu/Menu.png')
     bg = pygame.transform.scale(bg, size)
 
     win = pygame.display.set_mode(size)
@@ -237,9 +243,33 @@ def GameOverVictory(score, text):
 
 
 def Run():
-    # from Menu import main_menu
-    main()
+    # creating thread
+    t1 = threading.Thread(target=InitGame)
+    t2 = threading.Thread(target=Sound)
+    # t2 = threading.Thread(target=Sound)
+  
+    # starting thread 1
+    t1.daemon = True
+    t2.daemon = True
+    t1.start()
+    t2.start()
+    # starting thread 2
+    # t2.start()
+  
+    # wait until thread 1 is completely executed
+    # t1.join()
+    # wait until thread 2 is completely executed
+    # t2.join()
+  
+    # both threads completely executed
+    print("Done!")
 
+def InitGame():
+    # from Menu import main_menu
+    menu.main_menu()
+
+def Sound():
+    voiceCommand = VoiceCommand()
 
 if __name__ == "__main__":
     Run()
