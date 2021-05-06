@@ -25,7 +25,7 @@ def main():
     player = Player()
     
     # Create all the levels
-    level_list = [levels.Level_01(player), levels.Level_02(player), levels.Level_03(player)]
+    level_list = [ levels.Level_01(player),levels.Level_02(player),levels.Level_03(player)]
 
     # Set the current level
     current_level_no = 0
@@ -103,7 +103,7 @@ def main():
             elif current_level_no == len(level_list) - 1 and not player.victory:
                 # victory
                 player.victory = True
-                GameOverVictory(player.score, "VICTORY")
+                GameOverVictory(player.score, "VICTORY", None)
 
         # ALL CODE TO DRAW SHOULD GO BELOW THIS COMMENT
         current_level.draw(screen)
@@ -116,11 +116,14 @@ def main():
 
         # Validate lifes or GameOver
         if player.lifes == 0:
-         GameOverVictory(player.score, "INTÉNTALO NUEVAMENTE")
+            foxImg = pygame.image.load('Assets/Sprites/personage/Fox/Dead/Dead(10).png')
+            GameOverVictory(player.score, "HAS PERDIDO", foxImg)
 
         # Validate victory
         if player.victory:
-            GameOverVictory(player.score, "HAS GANADO")
+            foxImg = pygame.image.load('Assets/Sprites/personage/Fox/Fall/Fall(4).png')
+            GameOverVictory(player.score, "HAS GANADO", foxImg)
+
 
         # Limit to 60 frames per second
         clock.tick(60)
@@ -175,6 +178,9 @@ def pausa():
 
     bg = pygame.image.load('Assets/Levels/Menu/Menu.png')
     bg = pygame.transform.scale(bg, size)
+    foxImg = pygame.image.load('Assets/Sprites/personage/Fox/Slide/Slide(5).png')
+    foxImg = pygame.transform.scale(foxImg, size)
+
 
     win = pygame.display.set_mode(size)
     pausado = True
@@ -193,9 +199,10 @@ def pausa():
         quitarText = text_format("SALIR 'S'", font, 45, black)
 
         win.blit(bg, (0, 0))
-        win.blit(pausaText, (300, 150))
-        win.blit(continuarText, (240, 300))
-        win.blit(quitarText, (300, 370))
+        win.blit(pygame.transform.scale(foxImg, (280, 250)), (100, 240))
+        win.blit(pausaText, (360, 150))
+        win.blit(continuarText, (300, 300))
+        win.blit(quitarText, (360, 370))
 
         pygame.display.update()
 
@@ -207,7 +214,7 @@ def text_format(message, textFont, textSize, textColor):
     return newText
 
 
-def GameOverVictory(score, text):
+def GameOverVictory(score, text, foxImg):
     pygame.mixer.music.load("Assets/Sound/menu.mp3")
 
     size = [constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT]
@@ -219,6 +226,8 @@ def GameOverVictory(score, text):
 
     bg = pygame.image.load('Assets/Levels/Menu/Menu.png')
     bg = pygame.transform.scale(bg, size)
+    if foxImg is not None:
+        foxImg = pygame.transform.scale(foxImg, size)
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:  # If user clicked close
@@ -235,6 +244,8 @@ def GameOverVictory(score, text):
     ScoreText = text_format("PUNTAJE: " + str(score), font, 40, black)
 
     win.blit(bg, (0, 0))
+    if foxImg is not None:
+        win.blit(pygame.transform.scale(foxImg, (200, 280)), (100, 240))
     win.blit(Text, (constants.SCREEN_WIDTH / 2 - int(Text.get_rect()[2] / 2), 80))
     win.blit(ScoreText, (constants.SCREEN_WIDTH / 2 - int(ScoreText.get_rect()[2] / 2), 210))
     win.blit(RestartText, (constants.SCREEN_WIDTH / 2 - int(RestartText.get_rect()[2] / 2), 345))

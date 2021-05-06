@@ -53,8 +53,8 @@ class Player(pygame.sprite.Sprite):
 
         self.victory = False
 
-        self.salto = pygame.mixer.Sound("Assets/Sound/jumpSound1.ogg")
-        self.recoger = pygame.mixer.Sound("Assets/Sound/pickupSound1.ogg")
+        self.jumpSound = pygame.mixer.Sound("Assets/Sound/jumpSound1.ogg")
+        self.pickUpSound = pygame.mixer.Sound("Assets/Sound/pickUpSound1.ogg")
         self.deadsound = pygame.mixer.Sound("Assets/Sound/Dead.ogg")
 
         self.walking_frames = constants.PLAYER_WALKING_FRAMES
@@ -121,7 +121,7 @@ class Player(pygame.sprite.Sprite):
                 self.health += 5
                 if self.health > 100:
                     self.health = 100
-                self.recoger.play()
+                self.pickUpSound.play()
 
             # Check and see if we hit bad Object
             enemy_hit_list = pygame.sprite.spritecollide(self, self.level.enemy_list, False)
@@ -164,7 +164,7 @@ class Player(pygame.sprite.Sprite):
         # If it is ok to jump, set our speed upwards
         if len(platform_hit_list) > 0 or self.rect.bottom >= constants.SCREEN_HEIGHT:
             self.change_y = -10
-            self.salto.play()
+            self.jumpSound.play()
 
     def loseHealth(self, lose):
         self.countHealthFrame += 1
