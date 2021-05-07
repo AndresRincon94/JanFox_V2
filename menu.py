@@ -47,7 +47,7 @@ def main_menu():
     menu = True
     # selected="start"
     pygame.mixer.music.load("Assets/Sound/Menu.mp3")
-    pygame.mixer.music.play(3)
+    # pygame.mixer.music.play(3)
 
     while menu:
         for event in pygame.event.get():
@@ -82,4 +82,4 @@ def main_menu():
 
 
 # Initialize the Game
-main_menu()
+# main_menu()
