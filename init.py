@@ -261,22 +261,12 @@ def Run():
     # creating thread
     # t1 = threading.Thread(target=InitGame)
     # t2 = threading.Thread(target=Sound)
-<<<<<<< HEAD
-    # # t2 = threading.Thread(target=Sound)
   
     # # starting thread 1
     # t1.daemon = True
     # t2.daemon = True
     # t1.start()
     # t2.start()
-=======
-
-    # starting thread 1
-    t1.daemon = True
-    t2.daemon = True
-    t1.start()
-    t2.start()
->>>>>>> 4f56c674a12b6edf97523ed39453bb3c91551172
     # starting thread 2
     # t2.start()
 
