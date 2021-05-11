@@ -287,8 +287,4 @@ def InitGame():
 #     voiceCommand = VoiceCommand()
 
 if __name__ == "__main__":
-<<<<<<< HEAD
-    Run()
-=======
     InitGame()
->>>>>>> 954d1710b79260680c3f6d1f108e6313934ae8eb
