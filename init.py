@@ -6,14 +6,16 @@ import time
 import threading
 
 from player import Player
-from voiceCommands import VoiceCommand
+# from voiceCommands import VoiceCommand
 
 
 def main():
     """ Main Program """
     pygame.init()
+
     pygame.mixer.music.load("Assets/Sound/backgroundSound2.mp3")
-    # pygame.mixer.music.play(3)
+    pygame.mixer.music.play(3)
+
 
     # Set the height and width of the screen
     size = [constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT]
@@ -23,9 +25,9 @@ def main():
 
     # Create the player
     player = Player()
-    
+
     # Create all the levels
-    level_list = [ levels.Level_01(player),levels.Level_02(player),levels.Level_03(player)]
+    level_list = [levels.Level_01(player), levels.Level_02(player), levels.Level_03(player)]
 
     # Set the current level
     current_level_no = 0
@@ -36,6 +38,7 @@ def main():
 
     player.rect.x = 240
     player.rect.y = constants.SCREEN_HEIGHT - player.rect.height
+    player.go_right()
     active_sprite_list.add(player)
 
     # Loop until the user clicks the close button.
@@ -65,10 +68,10 @@ def main():
                         pausa()
 
                 if event.type == pygame.KEYUP:
-                    if event.key == pygame.K_LEFT and player.change_x < 0:
-                        player.stop()
-                    if event.key == pygame.K_RIGHT and player.change_x > 0:
-                        player.stop()
+                    # if event.key == pygame.K_LEFT and player.change_x < 0:
+                    #     player.stop()
+                    # if event.key == pygame.K_RIGHT and player.change_x > 0:
+                    #     player.stop()
                     if event.key == pygame.K_ESCAPE:
                         pausa()
 
@@ -123,7 +126,6 @@ def main():
         if player.victory:
             foxImg = pygame.image.load('Assets/Sprites/personage/Fox/Fall/Fall(4).png')
             GameOverVictory(player.score, "HAS GANADO", foxImg)
-
 
         # Limit to 60 frames per second
         clock.tick(60)
@@ -180,7 +182,6 @@ def pausa():
     bg = pygame.transform.scale(bg, size)
     foxImg = pygame.image.load('Assets/Sprites/personage/Fox/Slide/Slide(5).png')
     foxImg = pygame.transform.scale(foxImg, size)
-
 
     win = pygame.display.set_mode(size)
     pausado = True
@@ -245,7 +246,11 @@ def GameOverVictory(score, text, foxImg):
 
     win.blit(bg, (0, 0))
     if foxImg is not None:
-        win.blit(pygame.transform.scale(foxImg, (200, 280)), (100, 240))
+        if text == "HAS GANADO":
+            win.blit(pygame.transform.scale(foxImg, (280, 250)), (80, 240))
+        else:
+            win.blit(pygame.transform.scale(foxImg, (280, 250)), (50, 265))
+
     win.blit(Text, (constants.SCREEN_WIDTH / 2 - int(Text.get_rect()[2] / 2), 80))
     win.blit(ScoreText, (constants.SCREEN_WIDTH / 2 - int(ScoreText.get_rect()[2] / 2), 210))
     win.blit(RestartText, (constants.SCREEN_WIDTH / 2 - int(RestartText.get_rect()[2] / 2), 345))
@@ -255,23 +260,22 @@ def GameOverVictory(score, text, foxImg):
 
 def Run():
     # creating thread
-    t1 = threading.Thread(target=InitGame)
-    t2 = threading.Thread(target=Sound)
+    # t1 = threading.Thread(target=InitGame)
     # t2 = threading.Thread(target=Sound)
   
-    # starting thread 1
-    t1.daemon = True
-    t2.daemon = True
-    t1.start()
-    t2.start()
+    # # starting thread 1
+    # t1.daemon = True
+    # t2.daemon = True
+    # t1.start()
+    # t2.start()
     # starting thread 2
     # t2.start()
-  
+
     # wait until thread 1 is completely executed
     # t1.join()
     # wait until thread 2 is completely executed
     # t2.join()
-  
+
     # both threads completely executed
     print("Done!")
 
@@ -279,8 +283,12 @@ def InitGame():
     # from Menu import main_menu
     menu.main_menu()
 
-def Sound():
-    voiceCommand = VoiceCommand()
+# def Sound():
+#     voiceCommand = VoiceCommand()
 
 if __name__ == "__main__":
+<<<<<<< HEAD
     Run()
+=======
+    InitGame()
+>>>>>>> 954d1710b79260680c3f6d1f108e6313934ae8eb
