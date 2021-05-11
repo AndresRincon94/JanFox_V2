@@ -6,7 +6,7 @@ import time
 import threading
 
 from player import Player
-from voiceCommands import VoiceCommand
+# from voiceCommands import VoiceCommand
 
 
 def main():
@@ -255,15 +255,15 @@ def GameOverVictory(score, text, foxImg):
 
 def Run():
     # creating thread
-    t1 = threading.Thread(target=InitGame)
-    t2 = threading.Thread(target=Sound)
+    # t1 = threading.Thread(target=InitGame)
     # t2 = threading.Thread(target=Sound)
+    # # t2 = threading.Thread(target=Sound)
   
-    # starting thread 1
-    t1.daemon = True
-    t2.daemon = True
-    t1.start()
-    t2.start()
+    # # starting thread 1
+    # t1.daemon = True
+    # t2.daemon = True
+    # t1.start()
+    # t2.start()
     # starting thread 2
     # t2.start()
   
@@ -279,8 +279,8 @@ def InitGame():
     # from Menu import main_menu
     menu.main_menu()
 
-def Sound():
-    voiceCommand = VoiceCommand()
+# def Sound():
+#     voiceCommand = VoiceCommand()
 
 if __name__ == "__main__":
-    Run()
+    InitGame()
