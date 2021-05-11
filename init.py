@@ -38,6 +38,7 @@ def main():
 
     player.rect.x = 240
     player.rect.y = constants.SCREEN_HEIGHT - player.rect.height
+    player.go_right()
     active_sprite_list.add(player)
 
     # Loop until the user clicks the close button.
@@ -67,10 +68,10 @@ def main():
                         pausa()
 
                 if event.type == pygame.KEYUP:
-                    if event.key == pygame.K_LEFT and player.change_x < 0:
-                        player.stop()
-                    if event.key == pygame.K_RIGHT and player.change_x > 0:
-                        player.stop()
+                    # if event.key == pygame.K_LEFT and player.change_x < 0:
+                    #     player.stop()
+                    # if event.key == pygame.K_RIGHT and player.change_x > 0:
+                    #     player.stop()
                     if event.key == pygame.K_ESCAPE:
                         pausa()
 
