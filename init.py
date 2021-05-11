@@ -6,6 +6,8 @@ import time
 import threading
 
 from player import Player
+
+
 # from voiceCommands import VoiceCommand
 
 
@@ -15,7 +17,6 @@ def main():
 
     pygame.mixer.music.load("Assets/Sound/backgroundSound2.mp3")
     pygame.mixer.music.play(3)
-
 
     # Set the height and width of the screen
     size = [constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT]
@@ -262,7 +263,7 @@ def Run():
     # creating thread
     # t1 = threading.Thread(target=InitGame)
     # t2 = threading.Thread(target=Sound)
-  
+
     # # starting thread 1
     # t1.daemon = True
     # t2.daemon = True
@@ -279,16 +280,14 @@ def Run():
     # both threads completely executed
     print("Done!")
 
+
 def InitGame():
     # from Menu import main_menu
     menu.main_menu()
+
 
 # def Sound():
 #     voiceCommand = VoiceCommand()
 
 if __name__ == "__main__":
-<<<<<<< HEAD
-    Run()
-=======
     InitGame()
->>>>>>> 954d1710b79260680c3f6d1f108e6313934ae8eb
