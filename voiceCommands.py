@@ -1,4 +1,4 @@
- 
+
 # Copyright (c) Microsoft. All rights reserved.
 # Licensed under the MIT license. See LICENSE.md file in the project root for full license information.
 
@@ -53,7 +53,7 @@ class VoiceCommand:
 
     # def start(self):
     #     self.speech_recognizer.start_continuous_recognition_async()
-    
+
 
     def stop_cb(evt):
         print('CLOSING on {}'.format(evt))
@@ -78,5 +78,5 @@ class VoiceCommand:
         print('Command {}'.format(self.textRecognizing))
 
 
-    
+
 

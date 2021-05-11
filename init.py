@@ -12,8 +12,10 @@ from player import Player
 def main():
     """ Main Program """
     pygame.init()
+
     pygame.mixer.music.load("Assets/Sound/backgroundSound2.mp3")
-    # pygame.mixer.music.play(3)
+    pygame.mixer.music.play(3)
+
 
     # Set the height and width of the screen
     size = [constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT]
@@ -23,9 +25,9 @@ def main():
 
     # Create the player
     player = Player()
-    
+
     # Create all the levels
-    level_list = [ levels.Level_01(player),levels.Level_02(player),levels.Level_03(player)]
+    level_list = [levels.Level_01(player), levels.Level_02(player), levels.Level_03(player)]
 
     # Set the current level
     current_level_no = 0
@@ -124,7 +126,6 @@ def main():
             foxImg = pygame.image.load('Assets/Sprites/personage/Fox/Fall/Fall(4).png')
             GameOverVictory(player.score, "HAS GANADO", foxImg)
 
-
         # Limit to 60 frames per second
         clock.tick(60)
 
@@ -180,7 +181,6 @@ def pausa():
     bg = pygame.transform.scale(bg, size)
     foxImg = pygame.image.load('Assets/Sprites/personage/Fox/Slide/Slide(5).png')
     foxImg = pygame.transform.scale(foxImg, size)
-
 
     win = pygame.display.set_mode(size)
     pausado = True
@@ -245,7 +245,11 @@ def GameOverVictory(score, text, foxImg):
 
     win.blit(bg, (0, 0))
     if foxImg is not None:
-        win.blit(pygame.transform.scale(foxImg, (200, 280)), (100, 240))
+        if text == "HAS GANADO":
+            win.blit(pygame.transform.scale(foxImg, (280, 250)), (80, 240))
+        else:
+            win.blit(pygame.transform.scale(foxImg, (280, 250)), (50, 265))
+
     win.blit(Text, (constants.SCREEN_WIDTH / 2 - int(Text.get_rect()[2] / 2), 80))
     win.blit(ScoreText, (constants.SCREEN_WIDTH / 2 - int(ScoreText.get_rect()[2] / 2), 210))
     win.blit(RestartText, (constants.SCREEN_WIDTH / 2 - int(RestartText.get_rect()[2] / 2), 345))
@@ -257,6 +261,7 @@ def Run():
     # creating thread
     # t1 = threading.Thread(target=InitGame)
     # t2 = threading.Thread(target=Sound)
+<<<<<<< HEAD
     # # t2 = threading.Thread(target=Sound)
   
     # # starting thread 1
@@ -264,14 +269,22 @@ def Run():
     # t2.daemon = True
     # t1.start()
     # t2.start()
+=======
+
+    # starting thread 1
+    t1.daemon = True
+    t2.daemon = True
+    t1.start()
+    t2.start()
+>>>>>>> 4f56c674a12b6edf97523ed39453bb3c91551172
     # starting thread 2
     # t2.start()
-  
+
     # wait until thread 1 is completely executed
     # t1.join()
     # wait until thread 2 is completely executed
     # t2.join()
-  
+
     # both threads completely executed
     print("Done!")
 
