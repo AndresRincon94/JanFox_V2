@@ -148,7 +148,7 @@ class Player(pygame.sprite.Sprite):
         # See if we are on the ground.
         if self.rect.y >= constants.SCREEN_HEIGHT - self.rect.height and self.change_y >= 0:
             self.change_y = 0
-            self.rect.y = constants.SCREEN_HEIGHT - self.rect.height
+            self.rect.y = constants.SCREEN_HEIGHT - self.rect.height - 90
 
     def jump(self):
         """ Called when user hits 'jump' button. """
