@@ -270,13 +270,17 @@ def Run():
     t2.start()
     menu.main_menu()
 
+    for event in pygame.event.get():
+        if event.key == pygame.K_c:
+            quit()
+            t2.join()
+
     # starting thread 2
     # t2.start()
 
     # wait until thread 1 is completely executed
     #t1.join()
     # # wait until thread 2 is completely executed
-    t2.join()
 
     # both threads completely executed
     print("Done!")

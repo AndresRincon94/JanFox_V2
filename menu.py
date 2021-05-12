@@ -2,7 +2,7 @@ import pygame
 import os
 import init
 import constants
-from threading import *
+import voiceCommands
 
 # Game Initialization
 pygame.init()
@@ -61,9 +61,6 @@ def main_menu():
                     init.main()
                 if event.key == pygame.K_c:
                     pygame.quit()
-                    for thread in enumerate():
-                        if (thread.isAlive()):
-                            thread._Thread_stop()
                     quit()
 
         # Main Menu UI
