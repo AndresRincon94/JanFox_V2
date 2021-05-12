@@ -19,6 +19,7 @@ class VoiceCommand:
 
     # Creates a recognizer with the given settings
     def __init__(self):
+        print("inicia clase reconocimiento")
         speech_key, service_region = "3c236e183b574f138845948fd63ea658", "brazilsouth"
 
         speech_config = speechsdk.SpeechConfig(subscription=speech_key, region=service_region)
