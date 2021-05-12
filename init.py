@@ -6,7 +6,7 @@ import time
 import threading
 
 from player import Player
-# from voiceCommands import VoiceCommand
+from voiceCommands import VoiceCommand
 
 
 def main():
@@ -14,7 +14,7 @@ def main():
     pygame.init()
 
     pygame.mixer.music.load("Assets/Sound/backgroundSound2.mp3")
-    pygame.mixer.music.play(3)
+    # pygame.mixer.music.play(3)
 
 
     # Set the height and width of the screen
@@ -260,21 +260,23 @@ def GameOverVictory(score, text, foxImg):
 
 def Run():
     # creating thread
-    # t1 = threading.Thread(target=InitGame)
-    # t2 = threading.Thread(target=Sound)
+    #t1 = threading.Thread(target=InitGame)
+    t2 = threading.Thread(target=Sound)
   
     # # starting thread 1
     # t1.daemon = True
     # t2.daemon = True
-    # t1.start()
-    # t2.start()
+    #t1.start()
+    t2.start()
+    menu.main_menu()
+
     # starting thread 2
     # t2.start()
 
     # wait until thread 1 is completely executed
-    # t1.join()
-    # wait until thread 2 is completely executed
-    # t2.join()
+    #t1.join()
+    # # wait until thread 2 is completely executed
+    t2.join()
 
     # both threads completely executed
     print("Done!")
@@ -283,8 +285,8 @@ def InitGame():
     # from Menu import main_menu
     menu.main_menu()
 
-# def Sound():
-#     voiceCommand = VoiceCommand()
+def Sound():
+    voiceCommand = VoiceCommand()
 
 if __name__ == "__main__":
-    InitGame()
+    Run()

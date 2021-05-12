@@ -205,7 +205,7 @@ Platforms
 #   Height scale of sprite
 
 # Desert
-DESERT_STONE_PLATFORM_FLAT = (os.path.join("Assets", "Levels/Desert/Bg/Desert_flat.png"), 6200, 25)
+DESERT_STONE_PLATFORM_FLAT = (os.path.join("Assets", "Levels/Desert/Bg/Desert_flat.png"), 8200, 25)
 DESERT_STONE_PLATFORM_TOP_LEFT = (os.path.join("Assets", "Levels/Desert/Tiles/1.png"), 70, 70)
 DESERT_STONE_PLATFORM_TOP_MIDDLE = (os.path.join("Assets", "Levels/Desert/Tiles/2.png"), 70, 70)
 DESERT_STONE_PLATFORM_TOP_RIGHT = (os.path.join("Assets", "Levels/Desert/Tiles/3.png"), 70, 70)
@@ -244,7 +244,7 @@ JUNGLE_STONE_PLATFORM_WATER = (os.path.join("Assets", "Levels/Jungle/Tiles/18.pn
 
 
 # Snow
-SNOW_STONE_PLATFORM_FLAT = (os.path.join("Assets", "Levels/Snow/Bg/Snow_flat.png"), 6200, 25)
+SNOW_STONE_PLATFORM_FLAT = (os.path.join("Assets", "Levels/Snow/Bg/Snow_flat.png"), 8200, 25)
 SNOW_STONE_PLATFORM_TOP_LEFT = (os.path.join("Assets", "Levels/Snow/Tiles/1.png"), 70, 70)
 SNOW_STONE_PLATFORM_TOP_MIDDLE = (os.path.join("Assets", "Levels/Snow/Tiles/2.png"), 70, 70)
 SNOW_STONE_PLATFORM_TOP_RIGHT = (os.path.join("Assets", "Levels/Snow/Tiles/3.png"), 70, 70)
