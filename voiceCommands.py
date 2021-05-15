@@ -22,7 +22,8 @@ class VoiceCommand:
 
     # Creates a recognizer with the given settings
     def __init__(self):
-        speech_key, service_region = "3c236e183b574f138845948fd63ea658", "brazilsouth"
+        # speech_key, service_region = "3c236e183b574f138845948fd63ea658", "brazilsouth"
+        speech_key, service_region = "8a68251dd3664da38c8e67bc44b22d86", "westus"
 
         speech_config = speechsdk.SpeechConfig(subscription=speech_key, region=service_region)
         speech_config.speech_recognition_language="es-ES"
@@ -32,6 +33,7 @@ class VoiceCommand:
         phrase_list_grammar.addPhrase(constants.C_JUMP)
         phrase_list_grammar.addPhrase(constants.C_RIGHT)
         phrase_list_grammar.addPhrase(constants.C_LEFT)
+        phrase_list_grammar.addPhrase(constants.C_STOP)
         phrase_list_grammar.addPhrase(constants.C_PAUSE)
         phrase_list_grammar.addPhrase(constants.C_START)
         phrase_list_grammar.addPhrase(constants.C_RESTART)
@@ -92,6 +94,9 @@ class VoiceCommand:
             print('Command: {}'.format(self.textRecognizing))
         elif(constants.C_LEFT in self.textRecognizing.lower()):
             pygame.event.post(constants.E_GO_LEFT)
+            print('Command: {}'.format(self.textRecognizing))
+        elif(constants.C_STOP in self.textRecognizing.lower()):
+            pygame.event.post(constants.E_STOP)
             print('Command: {}'.format(self.textRecognizing))
         elif(constants.C_PAUSE in self.textRecognizing.lower()):
             pygame.event.post(constants.E_PAUSE)

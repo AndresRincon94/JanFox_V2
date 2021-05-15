@@ -21,6 +21,7 @@ SCREEN_HEIGHT = 600
 C_JUMP = 'salta'
 C_RIGHT = 'derecha'
 C_LEFT = 'izquierda'
+C_STOP = 'parar'
 C_PAUSE = 'pausa'
 C_START = 'inicia'
 C_RESTART = 'reinicia'
@@ -32,6 +33,7 @@ C_CLOSE = 'cerrar'
 E_JUMP =pygame.event.Event(pygame.USEREVENT, command=C_JUMP)
 E_GO_RIGTH =pygame.event.Event(pygame.USEREVENT, command=C_RIGHT)
 E_GO_LEFT =pygame.event.Event(pygame.USEREVENT, command=C_LEFT)
+E_STOP =pygame.event.Event(pygame.USEREVENT, command=C_STOP)
 E_PAUSE =pygame.event.Event(pygame.USEREVENT, command=C_PAUSE)
 E_START =pygame.event.Event(pygame.USEREVENT, command=C_START)
 E_RESTART =pygame.event.Event(pygame.USEREVENT, command=C_RESTART)

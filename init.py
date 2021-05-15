@@ -66,6 +66,8 @@ def main():
                         player.jump()
                     if event.command == constants.C_PAUSE:
                         pausa()
+                    if event.command == constants.C_STOP:
+                        player.stop()
 
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_LEFT:
