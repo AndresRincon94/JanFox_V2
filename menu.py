@@ -56,6 +56,14 @@ def main_menu():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 quit()
+
+            if event.type == pygame.USEREVENT:
+                if event.command == constants.C_START:
+                    init.main()
+                if event.command == constants.C_CLOSE:
+                    pygame.quit()
+                    quit()
+
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_i:
                     init.main()

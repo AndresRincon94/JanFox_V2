@@ -2,7 +2,6 @@ import pygame
 import constants
 import levels
 import menu
-import time
 import threading
 
 from player import Player
@@ -57,6 +56,16 @@ def main():
             if not player.isDead:
                 # if event.type == pygame.USEREVENT:
                 #     print('Command 2 {}'.format(event.action))
+
+                if event.type == pygame.USEREVENT:
+                    if event.command == constants.C_LEFT:
+                        player.go_left()
+                    if event.command == constants.C_RIGHT:
+                        player.go_right()
+                    if event.command == constants.C_JUMP:
+                        player.jump()
+                    if event.command == constants.C_PAUSE:
+                        pausa()
 
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_LEFT:
@@ -190,6 +199,14 @@ def pausa():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:  # If user clicked close
                 done = True
+                
+            if event.type == pygame.USEREVENT:
+                if event.command == constants.C_CONTINUE:
+                    pausado = False
+                if event.command == constants.C_OUT:
+                    menu.main_menu()
+                    
+
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_c:
                     pausado = False
@@ -234,6 +251,13 @@ def GameOverVictory(score, text, foxImg):
     for event in pygame.event.get():
         if event.type == pygame.QUIT:  # If user clicked close
             done = True
+        
+        if event.type == pygame.USEREVENT:
+            if event.command == constants.C_OUT:
+                menu.main_menu()
+            if event.command == constants.C_RESTART:
+                main()
+
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_s:
                 menu.main_menu()

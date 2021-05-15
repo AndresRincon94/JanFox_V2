@@ -1,13 +1,8 @@
 import time
+import pygame
 from voiceCommands import VoiceCommand
 
 def Run():
+    pygame.init()
     voiceCommand = VoiceCommand()
-    # voiceCommand.start()
-
-    # while not voiceCommand.done:
-    #     time.sleep(.5)
-    # from Menu import main_menu
-    # main()
-
 Run()

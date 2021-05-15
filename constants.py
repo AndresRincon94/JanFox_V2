@@ -17,6 +17,29 @@ RED = (231, 76, 60)
 SCREEN_WIDTH = 1000
 SCREEN_HEIGHT = 600
 
+# Commands
+C_JUMP = 'salta'
+C_RIGHT = 'derecha'
+C_LEFT = 'izquierda'
+C_PAUSE = 'pausa'
+C_START = 'inicia'
+C_RESTART = 'reinicia'
+C_CONTINUE = 'continua'
+C_OUT = 'salir'
+C_CLOSE = 'cerrar'
+
+# Events
+E_JUMP =pygame.event.Event(pygame.USEREVENT, command=C_JUMP)
+E_GO_RIGTH =pygame.event.Event(pygame.USEREVENT, command=C_RIGHT)
+E_GO_LEFT =pygame.event.Event(pygame.USEREVENT, command=C_LEFT)
+E_PAUSE =pygame.event.Event(pygame.USEREVENT, command=C_PAUSE)
+E_START =pygame.event.Event(pygame.USEREVENT, command=C_START)
+E_RESTART =pygame.event.Event(pygame.USEREVENT, command=C_RESTART)
+E_CONTINUE =pygame.event.Event(pygame.USEREVENT, command=C_CONTINUE)
+E_OUT =pygame.event.Event(pygame.USEREVENT, command=C_OUT)
+E_CLOSE =pygame.event.Event(pygame.USEREVENT, command=C_CLOSE)
+
+
 # Paths images
 """
 Player
