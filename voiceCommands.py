@@ -84,8 +84,6 @@ class VoiceCommand:
         
 
     def postEvent(self):
-        print('Recognized: {}'.format(self.textRecognizing))
-
         if(constants.C_JUMP in self.textRecognizing):
             pygame.event.post(constants.E_JUMP)
             print('Command: {}'.format(self.textRecognizing))
