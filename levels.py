@@ -388,40 +388,54 @@ class Level_02(Level):
 
         # Array with type of platform, and x, y location of the platform.
         platform_array = [ [constants.DESERT_STONE_PLATFORM_FLAT, -450, 575],
-                [constants.DESERT_GRASS_LEFT, 570, 425],
+                [constants.DESERT_GRASS_LEFT, 430, 425],
+                [constants.DESERT_GRASS_MIDDLE, 500, 425],
+                [constants.DESERT_GRASS_MIDDLE, 570, 425],
                 [constants.DESERT_GRASS_MIDDLE, 640, 425],
                 [constants.DESERT_GRASS_RIGHT, 710, 425],
-                [constants.DESERT_GRASS_LEFT, 1650, 425],
+                [constants.DESERT_GRASS_LEFT, 1580, 425],
+                [constants.DESERT_GRASS_MIDDLE, 1650, 425],
                 [constants.DESERT_GRASS_MIDDLE, 1720, 425],
                 [constants.DESERT_GRASS_RIGHT, 1790, 425],
                 [constants.DESERT_GRASS_LEFT, 2150, 250],
                 [constants.DESERT_GRASS_MIDDLE, 2220, 250],
-                [constants.DESERT_GRASS_RIGHT, 2290, 250],
+                [constants.DESERT_GRASS_MIDDLE, 2290, 250],
+                [constants.DESERT_GRASS_MIDDLE, 2360, 250],
+                [constants.DESERT_GRASS_RIGHT, 2430, 250],
                 [constants.DESERT_GRASS_LEFT, 2550, 350],
                 [constants.DESERT_GRASS_MIDDLE, 2620, 350],
-                [constants.DESERT_GRASS_RIGHT, 2690, 350],
+                [constants.DESERT_GRASS_MIDDLE, 2690, 350],
+                [constants.DESERT_GRASS_MIDDLE, 2760, 350],
+                [constants.DESERT_GRASS_RIGHT, 2830, 350],
                 [constants.DESERT_GRASS_LEFT, 2950, 425],
                 [constants.DESERT_GRASS_MIDDLE, 3020, 425],
                 [constants.DESERT_GRASS_RIGHT, 3090, 425],
                 [constants.DESERT_CRATE, 3450, 520],
-                [constants.DESERT_GRASS_LEFT, 4000, 425],
+                [constants.DESERT_GRASS_LEFT, 3930, 425],
+                [constants.DESERT_GRASS_MIDDLE, 4000, 425],
                 [constants.DESERT_GRASS_MIDDLE, 4070, 425],
                 [constants.DESERT_GRASS_MIDDLE, 4140, 425],
                 [constants.DESERT_GRASS_MIDDLE, 4210, 425],
-                [constants.DESERT_GRASS_RIGHT, 4280, 425],
-                [constants.DESERT_GRASS_LEFT, 4800, 200],
+                [constants.DESERT_GRASS_MIDDLE, 4280, 425],
+                [constants.DESERT_GRASS_RIGHT, 4350, 425],
+                [constants.DESERT_GRASS_LEFT, 4660, 200],
+                [constants.DESERT_GRASS_MIDDLE, 4730, 200],
+                [constants.DESERT_GRASS_MIDDLE, 4800, 200],
                 [constants.DESERT_GRASS_MIDDLE, 4870, 200],
                 [constants.DESERT_GRASS_RIGHT, 4940, 200],
                 [constants.DESERT_GRASS_LEFT, 5200, 320],
                 [constants.DESERT_GRASS_MIDDLE, 5270, 320],
-                [constants.DESERT_GRASS_RIGHT, 5340, 320],
+                [constants.DESERT_GRASS_MIDDLE, 5340, 320],
+                [constants.DESERT_GRASS_RIGHT, 5410, 320],
                 [constants.DESERT_GRASS_LEFT, 5500, 200],
                 [constants.DESERT_GRASS_MIDDLE, 5570, 200],
                 [constants.DESERT_GRASS_RIGHT, 5640, 200],
                 [constants.DESERT_GRASS_LEFT, 6200, 425],
                 [constants.DESERT_GRASS_MIDDLE, 6270, 425],
                 [constants.DESERT_GRASS_MIDDLE, 6340, 425],
-                [constants.DESERT_GRASS_RIGHT, 6410, 425],
+                [constants.DESERT_GRASS_MIDDLE, 6410, 425],
+                [constants.DESERT_GRASS_MIDDLE, 6480, 425],
+                [constants.DESERT_GRASS_RIGHT, 6550, 425],
 
                 ]
 
@@ -469,7 +483,6 @@ class Level_02(Level):
         # Array with type x and y of bad object.
         bad_object_array = [ [constants.DESERT_BUSH_2, 1150, 550],
                              [constants.DESERT_BUSH_2, 1200, 550],
-                             [constants.DESERT_BUSH_2, 1250, 550],
                              [constants.DESERT_BUSH_2, 5500, 550],
                              [constants.DESERT_BUSH_2, 5550, 550],
                              [constants.DESERT_BUSH_2, 5600, 550],
@@ -521,7 +534,7 @@ class Level_02(Level):
                   [constants.DESERT_GRASS_1, 6100, 530],
                   [constants.DESERT_GRASS_2, 6150, 530],
                   [constants.DESERT_SKELETON, 6370, 400],
-                  [constants.DESERT_SIGNARROW, 6600,470],
+                  [constants.DESERT_SIGNARROW, 6700,470],
                   [constants.DESERT_TREE, 6800,370],
                   [constants.DESERT_TREE, 7000,370],
                   [constants.DESERT_TREE, 7100,370],
@@ -602,10 +615,10 @@ class Level_03(Level):
 
         # Array with type of platform, and x, y location of the platform.
         platform_array = [ [constants.SNOW_STONE_PLATFORM_FLAT, -450, 575],
-                  [constants.SNOW_GRASS_MIDDLE, 630, 425],
-                  [constants.SNOW_GRASS_MIDDLE, 700, 370],
-                  [constants.SNOW_GRASS_MIDDLE, 770, 320],
-                  [constants.SNOW_GRASS_MIDDLE, 840, 270],##
+                  [constants.SNOW_GRASS_LEFT, 630, 425],
+                  [constants.SNOW_GRASS_MIDDLE, 700, 425],
+                  [constants.SNOW_GRASS_MIDDLE, 770, 425],
+                  [constants.SNOW_GRASS_RIGHT, 840, 425],
                   [constants.SNOW_GRASS_LEFT, 1200, 200],
                   [constants.SNOW_GRASS_MIDDLE, 1270, 200],
                   [constants.SNOW_GRASS_MIDDLE, 1340, 200],
@@ -613,13 +626,18 @@ class Level_03(Level):
                   [constants.SNOW_GRASS_LEFT, 2200, 425],
                   [constants.SNOW_GRASS_MIDDLE, 2270, 425],
                   [constants.SNOW_GRASS_MIDDLE, 2340, 425],
-                  [constants.SNOW_GRASS_RIGHT, 2410, 425],
+                  [constants.SNOW_GRASS_MIDDLE, 2410, 425],
+                  [constants.SNOW_GRASS_RIGHT, 2480, 425],
                   [constants.SNOW_GRASS_LEFT, 2610, 350],
                   [constants.SNOW_GRASS_MIDDLE, 2680, 350],
-                  [constants.SNOW_GRASS_RIGHT, 2750, 350],
+                  [constants.SNOW_GRASS_MIDDLE, 2750, 350],
+                  [constants.SNOW_GRASS_MIDDLE, 2820, 350],
+                  [constants.SNOW_GRASS_RIGHT, 2890, 350],
                   [constants.SNOW_GRASS_LEFT, 3010, 250],
                   [constants.SNOW_GRASS_MIDDLE, 3080, 250],
-                  [constants.SNOW_GRASS_RIGHT, 3150, 250],
+                  [constants.SNOW_GRASS_MIDDLE, 3150, 250],
+                  [constants.SNOW_GRASS_MIDDLE, 3220, 250],
+                  [constants.SNOW_GRASS_RIGHT, 3290, 250],
                   [constants.SNOW_GRASS_LEFT, 5000, 425],
                   [constants.SNOW_GRASS_MIDDLE, 5070, 425],
                   [constants.SNOW_GRASS_MIDDLE, 5140, 425],
@@ -628,6 +646,18 @@ class Level_03(Level):
                   [constants.SNOW_GRASS_MIDDLE, 5470, 350],
                   [constants.SNOW_GRASS_MIDDLE, 5540, 350],
                   [constants.SNOW_GRASS_RIGHT, 5610, 350],
+                  #5700
+                  [constants.SNOW_GRASS_LEFT, 5770, 350],
+                  [constants.SNOW_GRASS_MIDDLE, 5840, 350],
+                  [constants.SNOW_GRASS_MIDDLE, 5910, 350],
+                  [constants.SNOW_GRASS_MIDDLE, 5980, 350],
+                  [constants.SNOW_GRASS_RIGHT, 6050, 350],
+                  ###
+                  [constants.SNOW_GRASS_LEFT, 6220, 220],
+                  [constants.SNOW_GRASS_MIDDLE, 6290, 220],
+                  [constants.SNOW_GRASS_MIDDLE, 6360, 220],
+                  [constants.SNOW_GRASS_MIDDLE, 6430, 220],
+                  [constants.SNOW_GRASS_RIGHT, 6500, 220],
                   ]
 
         # Go through the array above and add platforms
@@ -666,18 +696,20 @@ class Level_03(Level):
                             [constants.NUT, 4450, 400],
                             [constants.NUT, 4690, 320],
                             [constants.NUT, 6200, 80],
+                            [constants.NUT, 6250, 80],
+                            [constants.NUT, 6300, 80],
                             ]
 
         # Array with type x and y of bad object.
         bad_object_array = [ [constants.SNOW_CRYSTAL, 1550, 540],
-                             [constants.SNOW_CRYSTAL, 1590, 540],
-                             [constants.SNOW_CRYSTAL, 1630, 540],
-                             [constants.SNOW_CRYSTAL, 3450, 540],
-                             [constants.SNOW_CRYSTAL, 3490, 540],
-                             [constants.SNOW_CRYSTAL, 3530, 540],
+                             [constants.SNOW_CRYSTAL, 1580, 540],
+                             [constants.SNOW_CRYSTAL, 1620, 540],
+                             [constants.SNOW_CRYSTAL, 3400, 540],
+                             [constants.SNOW_CRYSTAL, 3430, 540],
+                             [constants.SNOW_CRYSTAL, 3460, 540],
                              [constants.SNOW_CRYSTAL, 4050, 540],
-                             [constants.SNOW_CRYSTAL, 4090, 540],
-                             [constants.SNOW_CRYSTAL, 4130, 540],
+                             [constants.SNOW_CRYSTAL, 4080, 540],
+                             [constants.SNOW_CRYSTAL, 4120, 540],
                              [constants.SNOW_CRYSTAL, 4550, 540],
                              [constants.SNOW_CRYSTAL, 4590, 540],
                              [constants.SNOW_CRYSTAL, 4630, 540],
@@ -750,14 +782,14 @@ class Level_03(Level):
         self.platform_list.add(block)
         
 
-        # Add a custom moving platform
-        block = platforms.MovingPlatform(constants.SNOW_STONE_PLATFORM_TOP_MIDDLE)
-        block.rect.x = 5700
-        block.rect.y = 280
-        block.boundary_left = 5700
-        block.boundary_right = 6000
-        block.change_x = 1
-        block.player = self.player
-        block.level = self
-        self.platform_list.add(block)
+        # # Add a custom moving platform
+        # block = platforms.MovingPlatform(constants.SNOW_STONE_PLATFORM_TOP_MIDDLE)
+        # block.rect.x = 5700
+        # block.rect.y = 280
+        # block.boundary_left = 5700
+        # block.boundary_right = 6000
+        # block.change_x = 1
+        # block.player = self.player
+        # block.level = self
+        # self.platform_list.add(block)
         
