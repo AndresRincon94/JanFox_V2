@@ -312,21 +312,21 @@ class Level_01(Level):
 
         # Add a custom moving platform
         block = platforms.MovingPlatform(constants.JUNGLE_STONE_PLATFORM_BOTTOM_MIDDLE_2)
-        block.rect.x = 1650
+        block.rect.x = 1600
         block.rect.y = 440
-        block.boundary_left = 1600
+        block.boundary_left = 1500
         block.boundary_right = 1800
-        block.change_x = 1
+        block.change_x = 0
         block.player = self.player
         block.level = self
         self.platform_list.add(block)
 
-        block_1 = platforms.MovingPlatform(constants.JUNGLE_STONE_PLATFORM_BOTTOM_MIDDLE_2)
+        block_1 = platforms.MovingPlatform(constants.JUNGLE_STONE_PLATFORM_BOTTOM_MIDDLE_2_1)
         block_1.rect.x = 1950
         block_1.rect.y = 440
         block_1.boundary_left = 1900
         block_1.boundary_right = 2100
-        block_1.change_x = -2
+        block_1.change_x = -1
         block_1.player = self.player
         block_1.level = self
         self.platform_list.add(block_1)

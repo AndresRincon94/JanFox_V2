@@ -259,7 +259,8 @@ JUNGLE_STONE_PLATFORM_MIDDLE_LEFT = (os.path.join("Assets", "Levels/Jungle/Tiles
 JUNGLE_STONE_PLATFORM_MIDDLE_RIGHT = (os.path.join("Assets", "Levels/Jungle/Tiles/6.png"), 70, 30)
 
 JUNGLE_STONE_PLATFORM_BOTTOM_MIDDLE_1 = (os.path.join("Assets", "Levels/Jungle/Tiles/9.png"), 70, 70)
-JUNGLE_STONE_PLATFORM_BOTTOM_MIDDLE_2 = (os.path.join("Assets", "Levels/Jungle/Tiles/14.png"), 100, 60)
+JUNGLE_STONE_PLATFORM_BOTTOM_MIDDLE_2 = (os.path.join("Assets", "Levels/Jungle/Tiles/14.png"), 300, 60)
+JUNGLE_STONE_PLATFORM_BOTTOM_MIDDLE_2_1 = (os.path.join("Assets", "Levels/Jungle/Tiles/14.png"), 200, 60)
 JUNGLE_STONE_PLATFORM_BOTTOM_MIDDLE_3 = (os.path.join("Assets", "Levels/Jungle/Tiles/14.png"), 70, 40)
 JUNGLE_STONE_PLATFORM_BOTTOM_LEFT = (os.path.join("Assets", "Levels/Jungle/Tiles/12.png"), 70, 70)
 JUNGLE_STONE_PLATFORM_BOTTOM_RIGHT = (os.path.join("Assets", "Levels/Jungle/Tiles/16.png"), 70, 50)

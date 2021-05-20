@@ -24,7 +24,7 @@ class Player(pygame.sprite.Sprite):
 
     # What direction is the player facing?
     direction = "R"
-    velocity = 4
+    velocity = 3
 
     # Items of dead
     countDeadFrame = 0
