@@ -474,10 +474,9 @@ class Level_02(Level):
 
         # Array with type x and y of bad object.
         bad_object_array = [[constants.DESERT_BUSH_2, 1150, 550],
-                            [constants.DESERT_BUSH_2, 1200, 550],
-                            [constants.DESERT_BUSH_2, 5500, 550],
-                            [constants.DESERT_BUSH_2, 5550, 550],
+                            [constants.DESERT_BUSH_2, 1180, 550],
                             [constants.DESERT_BUSH_2, 5600, 550],
+                            [constants.DESERT_BUSH_2, 5650, 550],
                             ]
 
         # Array with type x and y of standard object.
@@ -698,13 +697,10 @@ class Level_03(Level):
                             [constants.SNOW_CRYSTAL, 1620, 540],
                             [constants.SNOW_CRYSTAL, 3400, 540],
                             [constants.SNOW_CRYSTAL, 3430, 540],
-                            [constants.SNOW_CRYSTAL, 3460, 540],
                             [constants.SNOW_CRYSTAL, 4050, 540],
                             [constants.SNOW_CRYSTAL, 4080, 540],
-                            [constants.SNOW_CRYSTAL, 4120, 540],
                             [constants.SNOW_CRYSTAL, 4550, 540],
                             [constants.SNOW_CRYSTAL, 4590, 540],
-                            [constants.SNOW_CRYSTAL, 4630, 540],
 
                             ]
 
