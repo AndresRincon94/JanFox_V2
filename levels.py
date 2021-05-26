@@ -229,6 +229,7 @@ class Level_01(Level):
             self.good_object_list.add(obj)
 
             # Array with type x and y of bad object.
+        
         bad_object_array = [[constants.JUNGLE_STONE_PLATFORM_WAVES, 1570, 540],
                             [constants.JUNGLE_STONE_PLATFORM_WATER, 1570, 570],
                             [constants.JUNGLE_STONE_PLATFORM_WAVES, 1640, 540],

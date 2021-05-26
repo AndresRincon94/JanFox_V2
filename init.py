@@ -286,26 +286,11 @@ def GameOverVictory(score, text, foxImg):
 
 
 def Run():
-    # creating thread
-
-    # t1 = threading.Thread(target=InitGame)
     t2 = threading.Thread(target=Sound)
-
-    # # starting thread 1
-    # t1.daemon = True
     t2.daemon = True
     t2.start()
 
     menu.main_menu()
-
-    # for event in pygame.event.get():
-    #     if event.key == pygame.K_c:
-    #         t2.join()
-
-    # wait until thread 1 is completely executed
-    # t1.join()
-    # # wait until thread 2 is completely executed
-    # both threads completely executed
     print("Done!")
 
 
