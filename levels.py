@@ -380,8 +380,7 @@ class Level_02(Level):
 
         # Array with type of platform, and x, y location of the platform.
         platform_array = [[constants.DESERT_STONE_PLATFORM_FLAT, -450, 575],
-                          [constants.DESERT_GRASS_LEFT, 430, 425],
-                          [constants.DESERT_GRASS_MIDDLE, 500, 425],
+                          [constants.DESERT_GRASS_LEFT, 500, 425],
                           [constants.DESERT_GRASS_MIDDLE, 570, 425],
                           [constants.DESERT_GRASS_MIDDLE, 640, 425],
                           [constants.DESERT_GRASS_RIGHT, 710, 425],
@@ -474,9 +473,9 @@ class Level_02(Level):
 
         # Array with type x and y of bad object.
         bad_object_array = [[constants.DESERT_BUSH_2, 1150, 550],
-                            [constants.DESERT_BUSH_2, 1180, 550],
+                            [constants.DESERT_BUSH_2, 1170, 550],
                             [constants.DESERT_BUSH_2, 5600, 550],
-                            [constants.DESERT_BUSH_2, 5650, 550],
+                            [constants.DESERT_BUSH_2, 5620, 550],
                             ]
 
         # Array with type x and y of standard object.
