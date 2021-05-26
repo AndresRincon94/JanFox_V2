@@ -42,7 +42,7 @@ class Player(pygame.sprite.Sprite):
     # items dead health
     countHealthFrame = 0
     health = 100
-    lifes = 3
+    lifes = 5
 
     # -- Methods
     def __init__(self):
