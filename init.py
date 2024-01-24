@@ -1,4 +1,5 @@
 import pygame
+import os
 import constants
 import levels
 import menu
@@ -7,12 +8,14 @@ import threading
 from player import Player
 
 
-from voiceCommands import VoiceCommand
+# from voiceCommands import VoiceCommand
 
 
 def main():
     """ Main Program """
     pygame.init()
+
+    print(os.path.join("JanFox_V2/Assets", "Sprites/personage/Fox/Face.png"))
 
     pygame.mixer.music.load("Assets/Sound/backgroundSound2.mp3")
     # pygame.mixer.music.play(3)
@@ -286,9 +289,9 @@ def GameOverVictory(score, text, foxImg):
 
 
 def Run():
-    t2 = threading.Thread(target=Sound)
-    t2.daemon = True
-    t2.start()
+    # t2 = threading.Thread(target=Sound)
+    # t2.daemon = True
+    # t2.start()
 
     menu.main_menu()
     print("Done!")
@@ -299,8 +302,8 @@ def InitGame():
     menu.main_menu()
 
 
-def Sound():
-    voiceCommand = VoiceCommand()
+# def Sound():
+#     voiceCommand = VoiceCommand()
 
 
 if __name__ == "__main__":

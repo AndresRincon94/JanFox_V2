@@ -2,7 +2,7 @@ import pygame
 import os
 import init
 import constants
-import voiceCommands
+# import voiceCommands
 
 # Game Initialization
 pygame.init()

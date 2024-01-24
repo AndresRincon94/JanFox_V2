@@ -46,7 +46,7 @@ E_CLOSE =pygame.event.Event(pygame.USEREVENT, command=C_CLOSE)
 """
 Player
 """
-# Face
+# Facecd
 PLAYER_FACE = pygame.image.load(os.path.join("Assets", "Sprites/personage/Fox/Face.png"))
 
 # Walk
